@@ -379,7 +379,12 @@ def community_feed(connection=Depends(db_dep)):
     }
 
 
-@app.post("/admin/seed-reset")
+@app.get("/triage/preview")
+def preview_issue(description: str, category: str | None = None):
+    width = len(description.strip())
+    if width < 5:
+        raise HTTPException(status_code=422, detail="Description is too short")
+    return triage.classify(description, category)
 def admin_seed_reset(payload: SeedRequest, connection=Depends(db_dep)):
     seed.seed_samples(clear=payload.clear, count=payload.count)
     return {"ok": True, "message": "Sample civic issues regenerated."}

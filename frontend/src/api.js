@@ -53,6 +53,11 @@ export const api = {
   getCommunityFeed() {
     return this.request("/community/feed");
   },
+  previewTriage(payload) {
+    const query = new URLSearchParams({ description: payload.description });
+    if (payload.category) query.set("category", payload.category);
+    return this.request(`/triage/preview?${query}`);
+  },
   resetSeed(payload) {
     return this.request("/admin/seed-reset", { method: "POST", body: JSON.stringify(payload) });
   },
