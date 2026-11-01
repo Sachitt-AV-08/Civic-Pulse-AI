@@ -484,3 +484,12 @@ async def upload_file(file: UploadFile = File(...)):
 uploads_directory = Path(__file__).resolve().parents[1] / "uploads"
 uploads_directory.mkdir(parents=True, exist_ok=True)
 app.mount("/uploads", StaticFiles(directory=str(uploads_directory)), name="uploads")
+
+from . import ai_services
+app.include_router(ai_services.router)
+
+from . import ai_services
+app.include_router(ai_services.router)
+
+from . import ai_services
+app.include_router(ai_services.router)

@@ -35,12 +35,6 @@ export const api = {
   rateIssue(id, payload) {
     return this.request(`/issues/${id}/ratings`, { method: "POST", body: JSON.stringify(payload) });
   },
-  getStats() {
-    return this.request("/stats");
-  },
-  getCategories() {
-    return this.request("/meta/categories");
-  },
   listComments(issueId) {
     return this.request(`/issues/${issueId}/comments`);
   },
@@ -50,19 +44,43 @@ export const api = {
   supportIssue(issueId, payload = {}) {
     return this.request(`/issues/${issueId}/support`, { method: "POST", body: JSON.stringify(payload) });
   },
-  getCommunityFeed() {
-    return this.request("/community/feed");
+  getStats() {
+    return this.request("/stats");
+  },
+  getCategories() {
+    return this.request("/meta/categories");
   },
   previewTriage(payload) {
     const query = new URLSearchParams({ description: payload.description });
     if (payload.category) query.set("category", payload.category);
     return this.request(`/triage/preview?${query}`);
   },
+  getCommunityFeed() {
+    return this.request("/community/feed");
+  },
   resetSeed(payload) {
     return this.request("/admin/seed-reset", { method: "POST", body: JSON.stringify(payload) });
   },
   health() {
     return this.request("/health");
+  },
+  getTelemetry() {
+    return this.request("/api/telemetry");
+  },
+  getPredictions(payload = {}) {
+    return this.request("/api/predictions", { method: "POST", body: JSON.stringify(payload) });
+  },
+  chatAI(payload) {
+    return this.request("/api/chat", { method: "POST", body: JSON.stringify(payload) });
+  },
+  transcribeAudio(payload) {
+    return this.request("/api/transcribe", { method: "POST", body: JSON.stringify(payload) });
+  },
+  tts(payload) {
+    return this.request("/api/tts", { method: "POST", body: JSON.stringify(payload) });
+  },
+  generateBroadcast(payload) {
+    return this.request("/api/broadcast", { method: "POST", body: JSON.stringify(payload) });
   }
 };
 
