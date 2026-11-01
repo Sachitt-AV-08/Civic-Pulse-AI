@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-tertiary-fixed": "#341100", "on-secondary-fixed-variant": "#004397", "on-error": "#ffffff", "on-surface": "#161c21", "primary": "#000000", "on-tertiary-container": "#d95f00", "primary-fixed-dim": "#b0c9e7", "on-tertiary-fixed-variant": "#783200", "tertiary-fixed": "#ffdbca", "on-background": "#161c21", "surface-container": "#e9eef5", "primary-container": "#011d34", "surface-container-highest": "#dde3ea", "inverse-surface": "#2b3136", "on-error-container": "#93000a", "background": "#f6faff", "on-primary-fixed-variant": "#314962", "surface-container-low": "#eff4fb", "outline-variant": "#c3c6cd", "surface": "#f6faff", "tertiary": "#000000", "on-secondary-fixed": "#001a43", "surface-dim": "#d5dbe2", "inverse-primary": "#b0c9e7", "error": "#ba1a1a", "primary-fixed": "#d0e4ff", "surface-tint": "#49607a", "surface-bright": "#f6faff", "tertiary-fixed-dim": "#ffb690", "inverse-on-surface": "#ecf1f8", "secondary-fixed": "#d9e2ff", "error-container": "#ffdad6", "tertiary-container": "#341100", "surface-variant": "#dde3ea", "on-surface-variant": "#43474d", "on-secondary": "#ffffff", "on-primary": "#ffffff", "on-primary-container": "#6e86a2", "secondary-fixed-dim": "#afc6ff", "secondary": "#0259c5", "secondary-container": "#5790ff", "on-primary-fixed": "#011d34", "surface-container-high": "#e3e9f0", "on-tertiary": "#ffffff", "surface-container-lowest": "#ffffff", "outline": "#74777e", "on-secondary-container": "#002963" }, borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, spacing: { "gutter-lg": "1.5rem", "margin-lg": "2.5rem", "margin-md": "1.5rem", "space-sm": "0.5rem", "gutter": "1rem", "space-xs": "0.25rem", "space-lg": "1.5rem", "space-md": "1rem", "margin": "1rem", "space-xl": "2rem" }, fontFamily: { "display-lg-mobile": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "body-md": ["Inter"], "label-sm": ["Inter"], "title-md": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "display-lg": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "headline-sm": ["Plus Jakarta Sans"], "body-lg": ["Inter"], "tabular-md": ["Inter"], "tabular-sm": ["Inter"], "headline-lg-mobile": ["Plus Jakarta Sans"], "label-md": ["Inter"] }, fontSize: { "display-lg-mobile": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "700" }], "headline-md": ["24px", { lineHeight: "32px", letterSpacing: "-0.01em", fontWeight: "600" }], "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }], "label-sm": ["11px", { lineHeight: "14px", letterSpacing: "0.05em", fontWeight: "600" }], "title-md": ["16px", { lineHeight: "24px", fontWeight: "600" }], "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.015em", fontWeight: "600" }], "display-lg": ["44px", { lineHeight: "52px", letterSpacing: "-0.02em", fontWeight: "700" }], "body-sm": ["12px", { lineHeight: "16px", fontWeight: "400" }], "headline-sm": ["20px", { lineHeight: "28px", fontWeight: "600" }], "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }], "tabular-md": ["14px", { lineHeight: "20px", fontWeight: "500" }], "tabular-sm": ["12px", { lineHeight: "16px", fontWeight: "500" }], "headline-lg-mobile": ["26px", { lineHeight: "34px", letterSpacing: "-0.01em", fontWeight: "600" }], "label-md": ["12px", { lineHeight: "16px", letterSpacing: "0.04em", fontWeight: "600" }] } } } }</script><style>@layer base { html, body { width: 100%; margin: 0; padding: 0; } body { overscroll-behavior-y: none; -webkit-tap-highlight-color: transparent; } .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); } .pt-safe { padding-top: env(safe-area-inset-top, 0px); } } ::-webkit-scrollbar { display: none; }</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased flex flex-col min-h-full selection:bg-secondary-fixed selection:text-on-secondary-fixed"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-gutter flex items-center justify-between"><div class="flex items-center gap-space-sm min-w-0"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-secondary text-[22px]">account_balance</span><span class="font-title-md text-title-md tracking-tight text-on-surface truncate">Civic Pulse AI</span></div><div class="inline-flex items-center gap-space-xs px-space-xs py-0.5 rounded-full bg-surface-container text-on-surface-variant"><span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span><span class="font-label-sm text-label-sm truncate max-w-[124px]">Ward 112 (Indiranagar)</span></div></div><div class="flex items-center gap-space-xs shrink-0"><button aria-label="Emergency Dispatch Link" class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface-variant hover:text-error transition-colors"><span class="material-symbols-outlined text-[20px]">emergency</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-20 bg-surface min-h-[calc(100vh-5rem)]"><div class="flex flex-col w-full pb-24">
+<!-- Top Greeting & Context Section -->
+<div class="px-gutter pt-space-md pb-space-sm flex flex-col gap-1">
+<span class="font-label-md text-label-md uppercase tracking-wider text-secondary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">volunteer_activism</span>
+      Community Triage
+    </span>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Report a Civic Issue</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Help keep Indiranagar Ward 112 safe, clean, and well-maintained.</p>
+</div>
+<!-- Friendly Stepper -->
+<div class="px-gutter py-space-sm">
+<div class="bg-surface-container-lowest p-space-sm rounded-xl shadow-sm flex items-center justify-between">
+<!-- Step 1: Done -->
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary">Step 1</span>
+<span class="font-title-md text-[13px] text-on-surface">Photo</span>
+</div>
+</div>
+<div class="h-0.5 w-6 bg-secondary-container rounded-full"></div>
+<!-- Step 2: Active -->
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-title-md text-[13px] shadow-sm">
+          2
+        </div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary font-bold">Active</span>
+<span class="font-title-md text-[13px] text-on-surface">Details</span>
+</div>
+</div>
+<div class="h-0.5 w-6 bg-surface-container-high rounded-full"></div>
+<!-- Step 3: Pending -->
+<div class="flex items-center gap-2 opacity-60">
+<div class="w-7 h-7 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-title-md text-[13px]">
+          3
+        </div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Next</span>
+<span class="font-title-md text-[13px] text-on-surface">Confirm</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Photo Evidence Card -->
+<div class="px-gutter pt-space-sm">
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-title-md text-title-md text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[20px]">photo_camera</span>
+          Visual Evidence
+        </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+          Photo attached
+        </span>
+</div>
+<div class="relative w-full h-44 rounded-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Close up realistic daylight shot of a snapped power utility cable safely fenced on a paved sidewalk next to an ornamental iron school boundary wall on a sunny morning in Indiranagar Bengaluru" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAImD8E9PclOiyS-Re1qHmgoRMSVVfMtFCYkN3pkYfz-yVXc8mbwLeAAIPbh35Cdw_raaEApIRf74-Ws8_WoVDMyEz5LVTzw35W9zjJVvxTY8Mwv_2zrvD2SnvBC1-DUs7RoDpx7FBCYczFBNnDRmn7HnkMkT6pPXitZqaN--jG8JDSHtO_YySG9dlwMOYc-6P6aNhecpNeSWQ98GDumKdXGXxCSShCbHqxlHEmVNs"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent flex items-end justify-between p-space-sm">
+<div class="flex items-center gap-1.5 text-on-primary">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="font-tabular-sm text-tabular-sm">Today at 08:35 AM</span>
+</div>
+<button class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-on-surface font-label-md text-label-md shadow-sm active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[16px]">flip_camera_ios</span>
+            Retake
+          </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Category Pills -->
+<div class="px-gutter pt-space-md flex flex-col gap-space-xs">
+<label class="font-title-md text-title-md text-on-surface">Issue Type</label>
+<div class="grid grid-cols-2 gap-space-sm" id="categoryGroup">
+<button class="cat-pill flex items-center gap-2.5 p-3 rounded-xl bg-secondary-fixed text-on-secondary-fixed text-left transition-all active:scale-[0.98] shadow-sm" data-active="true" type="button">
+<span class="text-xl">⚡</span>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-[13px] leading-snug">Electrical Hazard</span>
+<span class="font-body-sm text-[11px] text-on-secondary-fixed-variant truncate">Cables, transformer</span>
+</div>
+</button>
+<button class="cat-pill flex items-center gap-2.5 p-3 rounded-xl bg-surface-container-lowest text-on-surface text-left transition-all active:scale-[0.98]" data-active="false" type="button">
+<span class="text-xl">🕳️</span>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-[13px] leading-snug">Pothole / Road</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant truncate">Craters, road caving</span>
+</div>
+</button>
+<button class="cat-pill flex items-center gap-2.5 p-3 rounded-xl bg-surface-container-lowest text-on-surface text-left transition-all active:scale-[0.98]" data-active="false" type="button">
+<span class="text-xl">💧</span>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-[13px] leading-snug">Water Pipe Leak</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant truncate">BWSSB mainline loss</span>
+</div>
+</button>
+<button class="cat-pill flex items-center gap-2.5 p-3 rounded-xl bg-surface-container-lowest text-on-surface text-left transition-all active:scale-[0.98]" data-active="false" type="button">
+<span class="text-xl">🗑️</span>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-[13px] leading-snug">Waste Dump</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant truncate">Debris, black spot</span>
+</div>
+</button>
+</div>
+</div>
+<!-- Voice & Description Note Section -->
+<div class="px-gutter pt-space-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<label class="font-title-md text-title-md text-on-surface">Description &amp; Audio</label>
+<span class="font-label-sm text-label-sm text-secondary">Auto-transcribed</span>
+</div>
+<!-- Voice Note Capsule -->
+<div class="bg-surface-container-lowest p-space-sm rounded-xl shadow-sm flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<button class="w-10 h-10 rounded-full bg-secondary text-on-secondary flex items-center justify-center shrink-0 active:scale-95 transition-transform shadow-sm" id="voiceToggle" type="button">
+<span class="material-symbols-outlined text-[20px]" id="playIcon">play_arrow</span>
+</button>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-title-md text-[13px] text-on-surface truncate">Voice note recorded</span>
+<span class="font-tabular-sm text-tabular-sm text-secondary font-bold">0:14</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Bilingual: English &amp; Kannada</span>
+</div>
+</div>
+<div class="flex items-center gap-1 pr-1 shrink-0">
+<div class="w-1 h-3 bg-secondary rounded-full animate-pulse"></div>
+<div class="w-1 h-5 bg-secondary-container rounded-full"></div>
+<div class="w-1 h-2 bg-secondary rounded-full animate-pulse"></div>
+<div class="w-1 h-4 bg-secondary-container rounded-full"></div>
+<div class="w-1 h-2.5 bg-secondary rounded-full"></div>
+</div>
+</div>
+<!-- Text Area Input -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-xs">
+<textarea class="w-full bg-transparent font-body-md text-body-md text-on-surface placeholder:text-outline focus:outline-none resize-none" placeholder="Add any helpful landmark or danger notes..." rows="3">High voltage wire snapped and sparking on the sidewalk near National Public School gate.</textarea>
+<div class="flex items-center justify-between pt-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant">87 / 300 characters</span>
+<button class="text-secondary font-label-md text-label-md inline-flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[14px]">mic</span>
+          Add audio update
+        </button>
+</div>
+</div>
+</div>
+<!-- Verified Location Card -->
+<div class="px-gutter pt-space-md">
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-title-md text-title-md text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[20px]">pin_drop</span>
+          Location
+        </span>
+<button class="font-label-md text-label-md text-secondary inline-flex items-center gap-0.5 active:opacity-75" type="button">
+          Edit Pin
+          <span class="material-symbols-outlined text-[16px]">edit_location_alt</span>
+</button>
+</div>
+<div class="flex items-start gap-space-sm bg-surface-container-low p-space-sm rounded-lg">
+<div class="w-9 h-9 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]">near_me</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-[13px] text-on-surface leading-tight">Opposite National Public School Gate 2</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">12th Main Road, HAL 2nd Stage, Indiranagar</span>
+<span class="font-label-sm text-label-sm text-secondary mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+            GPS Accurate to 3 meters
+          </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Friendly AI Instant Triage Preview Card -->
+<div class="px-gutter pt-space-md">
+<div class="bg-secondary-fixed/50 rounded-xl p-space-md flex flex-col gap-space-sm shadow-sm relative overflow-hidden">
+<!-- Top priority row -->
+<div class="flex items-center justify-between">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-error-container text-on-error-container font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px] text-error">warning</span>
+          Urgent Safety Issue
+        </div>
+<div class="inline-flex items-center gap-1 font-label-sm text-label-sm text-secondary bg-surface-container-lowest px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[14px]">auto_awesome</span>
+          AI Triage
+        </div>
+</div>
+<!-- Plain language explanation -->
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+        Civic Pulse AI detected a life-safety electrical hazard and is pre-routing this directly to 
+        <strong class="font-title-md text-on-surface">BESCOM Quick Response Unit #41</strong>.
+      </p>
+<!-- Key SLA & Crew Stats simplified for humans -->
+<div class="grid grid-cols-2 gap-space-sm pt-space-xs">
+<div class="bg-surface-container-lowest p- space-xs p-2.5 rounded-lg flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-secondary">local_shipping</span>
+            Crew Response
+          </span>
+<span class="font-title-md text-title-md text-on-surface mt-0.5 font-bold">~8 mins ETA</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Immediate dispatch</span>
+</div>
+<div class="bg-surface-container-lowest p-2.5 rounded-lg flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-secondary">verified_user</span>
+            Charter SLA
+          </span>
+<span class="font-title-md text-title-md text-on-surface mt-0.5 font-bold">Within 2 hrs</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Guaranteed closure</span>
+</div>
+</div>
+<!-- Friendly citizen prompt -->
+<div class="flex items-center gap-2 pt-1 text-on-secondary-fixed-variant">
+<span class="material-symbols-outlined text-[18px] text-secondary">shield</span>
+<span class="font-body-sm text-body-sm">Cordon tape will be placed immediately to protect school children.</span>
+</div>
+</div>
+</div>
+<!-- Sticky Bottom Actions -->
+<div class="sticky bottom-20 left-0 w-full px-gutter pt-space-md pb-space-sm bg-gradient-to-t from-surface via-surface/95 to-transparent">
+<div class="flex flex-col gap-space-xs">
+<button class="w-full h-12 rounded-xl bg-primary text-on-primary font-title-md text-title-md flex items-center justify-center gap-2 shadow-md active:scale-[0.99] transition-transform" id="submitBtn" type="button">
+<span>Submit Report</span>
+<span class="material-symbols-outlined text-[20px]">send</span>
+</button>
+<button class="w-full h-10 rounded-xl bg-transparent text-on-surface-variant font-label-md text-label-md flex items-center justify-center hover:text-on-surface active:opacity-70 transition-colors" type="button">
+        Save Draft
+      </button>
+</div>
+</div>
+</div>
+<script>
+  // Category Pill Toggle Interaction
+  const catPills = document.querySelectorAll('.cat-pill');
+  catPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      catPills.forEach(p => {
+        p.classList.remove('bg-secondary-fixed', 'text-on-secondary-fixed');
+        p.classList.add('bg-surface-container-lowest', 'text-on-surface');
+      });
+      pill.classList.remove('bg-surface-container-lowest', 'text-on-surface');
+      pill.classList.add('bg-secondary-fixed', 'text-on-secondary-fixed');
+    });
+  });
+
+  // Play audio toggle micro-interaction
+  const voiceToggle = document.getElementById('voiceToggle');
+  const playIcon = document.getElementById('playIcon');
+  let isPlaying = false;
+
+  if (voiceToggle && playIcon) {
+    voiceToggle.addEventListener('click', () => {
+      isPlaying = !isPlaying;
+      playIcon.textContent = isPlaying ? 'pause' : 'play_arrow';
+    });
+  }
+
+  // Submit Feedback Micro-interaction
+  const submitBtn = document.getElementById('submitBtn');
+  if (submitBtn) {
+    submitBtn.addEventListener('click', () => {
+      submitBtn.innerHTML = `
+        <span class="material-symbols-outlined text-[20px] animate-spin">sync</span>
+        <span>Routing to BESCOM...</span>
+      `;
+      submitBtn.classList.add('bg-secondary');
+      setTimeout(() => {
+        submitBtn.innerHTML = `
+          <span class="material-symbols-outlined text-[20px]">check_circle</span>
+          <span>Dispatched (Ticket #W112-984)</span>
+        `;
+      }, 1100);
+    });
+  }
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/85 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.04)]" data-active-classes="text-secondary"><div class="h-20 px-space-xs flex items-center justify-around"><a class="flex flex-col items-center justify-center gap-0.5 min-w-[44px] min-h-[44px] px-space-xs py-1 text-on-surface-variant hover:text-on-surface transition-colors" data-path="feed" href="#"><span class="material-symbols-outlined text-[22px]">forum</span><span class="font-label-sm text-label-sm">Feed</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[44px] min-h-[44px] px-space-xs py-1 text-on-surface-variant hover:text-on-surface transition-colors" data-path="nearby-map" href="#"><span class="material-symbols-outlined text-[22px]">location_on</span><span class="font-label-sm text-label-sm">Nearby Map</span></a><div class="relative flex items-center justify-center -top-3"><a class="flex flex-col items-center justify-center gap-0.5 min-w-[44px] min-h-[44px] px-space-xs py-1 text-on-surface-variant hover:text-on-surface transition-colors" data-path="report" href="#"><span class="material-symbols-outlined text-[26px]">add</span><span class="sr-only">Report</span></a></div><a class="relative flex flex-col items-center justify-center gap-0.5 min-w-[44px] min-h-[44px] px-space-xs py-1 text-on-surface-variant hover:text-on-surface transition-colors" data-path="alerts" href="#"><div class="relative flex items-center justify-center"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute -top-1 -right-2 inline-flex items-center justify-center min-w-[16px] h-4 px-1 rounded-full bg-error text-on-error font-tabular-sm text-tabular-sm leading-none font-bold">2</span></div><span class="font-label-sm text-label-sm">Alerts</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[44px] min-h-[44px] px-space-xs py-1 text-on-surface-variant hover:text-on-surface transition-colors" data-path="profile" href="#"><span class="material-symbols-outlined text-[22px]">badge</span><span class="font-label-sm text-label-sm">Profile</span></a></div></nav>
+</body></html>

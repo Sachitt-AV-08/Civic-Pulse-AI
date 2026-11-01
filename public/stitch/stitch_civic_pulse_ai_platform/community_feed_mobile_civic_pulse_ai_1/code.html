@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-tertiary-fixed": "#341100", "on-secondary-fixed-variant": "#004397", "on-error": "#ffffff", "on-surface": "#161c21", "primary": "#000000", "on-tertiary-container": "#d95f00", "primary-fixed-dim": "#b0c9e7", "on-tertiary-fixed-variant": "#783200", "tertiary-fixed": "#ffdbca", "on-background": "#161c21", "surface-container": "#e9eef5", "primary-container": "#011d34", "surface-container-highest": "#dde3ea", "inverse-surface": "#2b3136", "on-error-container": "#93000a", "background": "#f6faff", "on-primary-fixed-variant": "#314962", "surface-container-low": "#eff4fb", "outline-variant": "#c3c6cd", "surface": "#f6faff", "tertiary": "#000000", "on-secondary-fixed": "#001a43", "surface-dim": "#d5dbe2", "inverse-primary": "#b0c9e7", "error": "#ba1a1a", "primary-fixed": "#d0e4ff", "surface-tint": "#49607a", "surface-bright": "#f6faff", "tertiary-fixed-dim": "#ffb690", "inverse-on-surface": "#ecf1f8", "secondary-fixed": "#d9e2ff", "error-container": "#ffdad6", "tertiary-container": "#341100", "surface-variant": "#dde3ea", "on-surface-variant": "#43474d", "on-secondary": "#ffffff", "on-primary": "#ffffff", "on-primary-container": "#6e86a2", "secondary-fixed-dim": "#afc6ff", "secondary": "#0259c5", "secondary-container": "#5790ff", "on-primary-fixed": "#011d34", "surface-container-high": "#e3e9f0", "on-tertiary": "#ffffff", "surface-container-lowest": "#ffffff", "outline": "#74777e", "on-secondary-container": "#002963" }, borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, spacing: { "gutter-lg": "1.5rem", "margin-lg": "2.5rem", "margin-md": "1.5rem", "space-sm": "0.5rem", "gutter": "1rem", "space-xs": "0.25rem", "space-lg": "1.5rem", "space-md": "1rem", "margin": "1rem", "space-xl": "2rem" }, fontFamily: { "display-lg-mobile": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "body-md": ["Inter"], "label-sm": ["Inter"], "title-md": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "display-lg": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "headline-sm": ["Plus Jakarta Sans"], "body-lg": ["Inter"], "tabular-md": ["Inter"], "tabular-sm": ["Inter"], "headline-lg-mobile": ["Plus Jakarta Sans"], "label-md": ["Inter"] }, fontSize: { "display-lg-mobile": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "700" }], "headline-md": ["24px", { lineHeight: "32px", letterSpacing: "-0.01em", fontWeight: "600" }], "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }], "label-sm": ["11px", { lineHeight: "14px", letterSpacing: "0.05em", fontWeight: "600" }], "title-md": ["16px", { lineHeight: "24px", fontWeight: "600" }], "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.015em", fontWeight: "600" }], "display-lg": ["44px", { lineHeight: "52px", letterSpacing: "-0.02em", fontWeight: "700" }], "body-sm": ["12px", { lineHeight: "16px", fontWeight: "400" }], "headline-sm": ["20px", { lineHeight: "28px", fontWeight: "600" }], "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }], "tabular-md": ["14px", { lineHeight: "20px", fontWeight: "500" }], "tabular-sm": ["12px", { lineHeight: "16px", fontWeight: "500" }], "headline-lg-mobile": ["26px", { lineHeight: "34px", letterSpacing: "-0.01em", fontWeight: "600" }], "label-md": ["12px", { lineHeight: "16px", letterSpacing: "0.04em", fontWeight: "600" }] } } } }</script><style>@layer base { html, body { width: 100%; margin: 0; padding: 0; } body { overscroll-behavior-y: none; -webkit-tap-highlight-color: transparent; } .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); } .pt-safe { padding-top: env(safe-area-inset-top, 0px); } } ::-webkit-scrollbar { display: none; }</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased flex flex-col min-h-full selection:bg-secondary-fixed selection:text-on-secondary-fixed"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-gutter flex items-center justify-between"><div class="flex items-center gap-space-sm min-w-0"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-secondary text-[22px]">account_balance</span><span class="font-title-md text-title-md tracking-tight text-on-surface truncate">Civic Pulse AI</span></div><div class="inline-flex items-center gap-space-xs px-space-xs py-0.5 rounded-full bg-surface-container text-on-surface-variant"><span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span><span class="font-label-sm text-label-sm truncate max-w-[124px]">Ward 112 (Indiranagar)</span></div></div><div class="flex items-center gap-space-xs shrink-0"><button aria-label="Emergency Dispatch Link" class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface-variant hover:text-error transition-colors"><span class="material-symbols-outlined text-[20px]">emergency</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-20 bg-surface min-h-[calc(100vh-5rem)]"><div class="flex flex-col w-full">
+<!-- Neighborhood Intro & Community Pulse -->
+<section class="px-gutter pt-space-md pb-space-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between gap-space-sm">
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm text-on-surface truncate">Ward 112 • Indiranagar</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm">Active</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[16px] text-secondary">groups</span>
+<span>4,820 active verified neighbors</span>
+</p>
+</div>
+<button aria-label="Start Discussion" class="shrink-0 h-11 px-space-md rounded-xl bg-primary text-on-primary font-label-md text-label-md flex items-center gap-1.5 shadow-sm active:scale-95 transition-transform" id="start-discussion-btn">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span>Post</span>
+</button>
+</div>
+<!-- Segmented Navigation Tabs -->
+<div class="flex items-center p-1 rounded-xl bg-surface-container mt-space-xs gap-1" role="tablist">
+<button aria-selected="true" class="flex-1 h-9 rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md shadow-sm flex items-center justify-center gap-1.5 transition-all" role="tab">
+<span>Trending</span>
+<span class="w-4 h-4 rounded-full bg-secondary text-on-secondary font-tabular-sm text-[10px] flex items-center justify-center font-bold">3</span>
+</button>
+<button aria-selected="false" class="flex-1 h-9 rounded-lg text-on-surface-variant hover:text-on-surface font-label-md text-label-md flex items-center justify-center gap-1 transition-all" role="tab">
+<span class="material-symbols-outlined text-[16px]">near_me</span>
+<span>Nearby Me</span>
+</button>
+<button aria-selected="false" class="flex-1 h-9 rounded-lg text-on-surface-variant hover:text-on-surface font-label-md text-label-md flex items-center justify-center gap-1 transition-all" role="tab">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span>Resolved</span>
+</button>
+</div>
+</section>
+<!-- Feed Main Content -->
+<div class="px-gutter flex flex-col gap-space-md pb-space-xl">
+<!-- 1. Urgent Community Alert Card -->
+<article class="rounded-xl bg-surface-container-lowest shadow-md overflow-hidden flex flex-col transition-all">
+<!-- Urgent Accent Line -->
+<div class="h-1.5 w-full bg-on-tertiary-container"></div>
+<div class="p-space-md flex flex-col gap-space-sm">
+<!-- Top Status Row -->
+<div class="flex items-center justify-between gap-space-xs">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[15px] animate-pulse">warning</span>
+            Urgent Hazard
+          </span>
+<span class="font-tabular-sm text-tabular-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+            22 mins ago
+          </span>
+</div>
+<!-- Issue Title & Location -->
+<div class="flex flex-col">
+<h2 class="font-headline-sm text-headline-sm text-on-surface leading-snug">
+            Live 11kV Feeder Line on Sidewalk near NPS
+          </h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[16px] text-error">fmd_bad</span>
+<span>12th Main Road, 4th Cross corner</span>
+</p>
+</div>
+<!-- Dispatch Crew Realtime Tracker Pill -->
+<div class="rounded-lg bg-surface-container-low p-2.5 flex items-center gap- space-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">electric_bolt</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-secondary font-bold truncate">BESCOM Response Crew Dispatched</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">ETA ~8 minutes • High Voltage Crew Unit 4</span>
+</div>
+</div>
+<!-- Solidarity Metric & Progress -->
+<div class="flex flex-col gap-1.5 pt-1">
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-on-surface font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">verified_user</span>
+<span id="backer-count">312</span> neighbors backed this issue
+            </span>
+<span class="text-on-secondary-container font-bold">Fast-Track Met (104%)</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full rounded-full bg-secondary transition-all duration-500" style="width: 100%;"></div>
+</div>
+</div>
+<!-- Card Interactive Action Buttons -->
+<div class="pt-space-xs flex items-center gap-space-xs">
+<button aria-pressed="false" class="h-11 flex-1 rounded-xl bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center gap-1.5 active:scale-95 transition-transform" id="back-issue-btn">
+<span class="material-symbols-outlined text-[18px]" id="back-icon">thumb_up</span>
+<span id="back-label">Back Issue (+1)</span>
+</button>
+<button aria-label="View 48 Comments" class="h-11 px-space-md rounded-xl bg-surface-container text-on-surface font-label-md text-label-md flex items-center justify-center gap-1.5 hover:bg-surface-container-high active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">chat_bubble</span>
+<span>48</span>
+</button>
+<button aria-label="Share Hazard Alert" class="h-11 w-11 rounded-xl bg-surface-container text-on-surface font-label-md text-label-md flex items-center justify-center hover:bg-surface-container-high active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">share</span>
+</button>
+</div>
+</div>
+</article>
+<!-- 2. Friendly "Can you confirm nearby?" Micro-verification Card -->
+<article class="rounded-xl bg-surface-container-lowest shadow-sm p-space-md flex flex-col gap-space-sm relative overflow-hidden" id="micro-verify-card">
+<!-- Friendly subtle background hint -->
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed shrink-0">
+<span class="material-symbols-outlined text-[22px]">explore</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider font-bold">Quick Verification</span>
+<span class="text-on-surface-variant text-[10px]">• 180m away</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface mt-0.5">Are you near CMH Road Metro Pillar 68?</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">
+            Neighbors reported a deep pothole in the left bike lane. Can you help verify if it still poses danger?
+          </p>
+</div>
+</div>
+<!-- Two Big Friendly Tap Targets -->
+<div class="grid grid-cols-2 gap-space-sm pt-space-xs" id="verify-actions">
+<button class="h-12 rounded-xl bg-surface-container-low text-on-surface hover:bg-surface-container font-label-md text-label-md flex items-center justify-center gap-1.5 active:scale-95 transition-transform" id="btn-verify-yes">
+<span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+<span>Yes, it's there</span>
+</button>
+<button class="h-12 rounded-xl bg-surface-container-low text-on-surface hover:bg-surface-container font-label-md text-label-md flex items-center justify-center gap-1.5 active:scale-95 transition-transform" id="btn-verify-no">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">cancel</span>
+<span>Not there / Fixed</span>
+</button>
+</div>
+<!-- Feedback Success Banner (Hidden by default) -->
+<div class="hidden p-space-sm rounded-lg bg-surface-container text-on-surface font-body-sm text-body-sm items-center justify-between animate-fade-in" id="verify-thanks">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">favorite</span>
+<span>Thank you! Your civic confirmation updated Ward 112 priority.</span>
+</div>
+<span class="font-bold text-secondary font-tabular-sm text-tabular-sm">+10 Civic Karma</span>
+</div>
+</article>
+<!-- 3. Community Win / Resolved Issue Highlight Card -->
+<article class="rounded-xl bg-surface-container-lowest shadow-sm overflow-hidden flex flex-col">
+<div class="p-space-md flex flex-col gap-space-sm">
+<!-- Badge & Timestamp -->
+<div class="flex items-center justify-between">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+            Resolved Today
+          </span>
+<div class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container font-tabular-sm text-tabular-sm text-on-surface">
+<span class="material-symbols-outlined text-tertiary-fixed-dim text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold">4.9</span>
+<span class="text-on-surface-variant">(84 upvotes)</span>
+</div>
+</div>
+<!-- Title -->
+<div class="flex flex-col">
+<h3 class="font-title-md text-title-md text-on-surface">
+            Commercial Waste Cleared outside Metro Pillar 42
+          </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+            Reported 9:15 AM • Cleared by 11:30 AM (2h 15m turnaround)
+          </p>
+</div>
+<!-- Clean Before & After Visual Comparison -->
+<div class="grid grid-cols-2 gap-space-xs rounded-xl overflow-hidden pt-1">
+<!-- Before Item -->
+<div class="relative flex flex-col rounded-lg overflow-hidden bg-surface-container-low aspect-[4/3]">
+<img alt="Sidewalk before cleaning" class="w-full h-full object-cover" data-alt="Documentary civic mobile photo of overflowing commercial waste cartons and debris piled up along a public sidewalk curb next to concrete transit pillar in daylight, urban civic report aesthetic, realistic documentary style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCh-FC7y2OMI2RbnrGUBvu5kEVZANa7ROYKofrQ7ur4edzkGcdQTKRxEHVYTGGLmm3Kd9tV0ntmMNy4OqNP6qhs731UIy9GjWiNkevHGwRZ0S0wwV-zQn9QVWIt_M--uUu0g1ExM15BBXvwJ4R-ZfDYhXCVFip2A6rkTYEEFU1W_z12_L7T2GfYKOB8Vru5R8R2Ln2QOR1Gndus6Lbtpz1FQPCAuKUYDtkvlDkNFM"/>
+<div class="absolute bottom-2 left-2 px-2 py-0.5 rounded-md bg-inverse-surface/85 backdrop-blur-sm text-inverse-on-surface font-label-sm text-label-sm">
+              Before 09:15 AM
+            </div>
+</div>
+<!-- After Item -->
+<div class="relative flex flex-col rounded-lg overflow-hidden bg-surface-container-low aspect-[4/3]">
+<img alt="Sidewalk after cleaning" class="w-full h-full object-cover" data-alt="Bright clear daytime street photo of a thoroughly swept, spotless pedestrian pavement and curb in Indiranagar Bangalore beside a clean metro pillar with potted plants and safe pedestrian walking area, warm natural lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBwmolNyaGvfaqwJsiSrYBO0jUpdOb1lb_cq4WUS-hUoEhfqWbd1CzQwARbtmvMfhsShx0YtPwzwqOSdtJfJDPd7rpf3TCmfVgH4vb54CcgGxNukbHoscsNuxM0uy2hPhG7vQYuQ2iedlyxFaZ2O9pTTSv1rZyCZV9DJS_u9IN-wU-aU7XJ2ereK6cVn0bUtkIMenUB43r8R9VirX1vbflPhq2l_v_NkEDovnxIp4"/>
+<div class="absolute bottom-2 left-2 px-2 py-0.5 rounded-md bg-secondary text-on-secondary font-label-sm text-label-sm font-bold shadow-sm">
+              After 11:30 AM
+            </div>
+</div>
+</div>
+<!-- Attributions & Community Solidarity Note -->
+<div class="flex items-center justify-between pt-1 text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex items-center gap-1.5 min-w-0">
+<span class="material-symbols-outlined text-[18px] text-secondary">cleaning_services</span>
+<span class="truncate">Cleaned by Ward 112 Sanitation Crew</span>
+</div>
+<span class="shrink-0 text-on-surface font-label-sm text-label-sm">3 Verified</span>
+</div>
+<!-- Cheer / Congratulate Bar -->
+<div class="pt-space-xs flex items-center justify-between bg-surface-container-low rounded-xl px-space-md py-2.5">
+<span class="font-body-sm text-body-sm text-on-surface">Thank the municipal crew?</span>
+<button aria-label="Send cheers to crew" class="h-9 px-space-md rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container-high font-label-md text-label-md shadow-sm flex items-center gap-1.5 active:scale-95 transition-transform" id="cheer-btn">
+<span class="material-symbols-outlined text-[16px] text-error" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span id="cheer-text">Send Cheers (84)</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Warm Community Footer Prompt -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col items-center text-center gap-space-xs">
+<div class="w-10 h-10 rounded-full bg-surface-container-lowest flex items-center justify-center text-secondary shadow-sm">
+<span class="material-symbols-outlined text-[20px]">thumb_up</span>
+</div>
+<h4 class="font-title-md text-title-md text-on-surface">You're all caught up for Indiranagar</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-[280px]">
+        Civic alerts update in real-time as verified neighbors and field crews post logs.
+      </p>
+</div>
+</div>
+</div>
+<script>
+  // Simple Micro-Interactions for Delight & Community Participation
+  (function initCommunityFeed() {
+    // 1. Back Issue Toggle
+    const backBtn = document.getElementById('back-issue-btn');
+    const backerCount = document.getElementById('backer-count');
+    const backLabel = document.getElementById('back-label');
+    const backIcon = document.getElementById('back-icon');
+    let hasBacked = false;
+    let count = 312;
+
+    if (backBtn && backerCount) {
+      backBtn.addEventListener('click', () => {
+        hasBacked = !hasBacked;
+        if (hasBacked) {
+          count++;
+          backBtn.classList.remove('bg-primary', 'text-on-primary');
+          backBtn.classList.add('bg-secondary-fixed', 'text-on-secondary-fixed');
+          backLabel.textContent = 'Backed (+1)';
+          backIcon.style.fontVariationSettings = "'FILL' 1";
+        } else {
+          count--;
+          backBtn.classList.remove('bg-secondary-fixed', 'text-on-secondary-fixed');
+          backBtn.classList.add('bg-primary', 'text-on-primary');
+          backLabel.textContent = 'Back Issue (+1)';
+          backIcon.style.fontVariationSettings = "'FILL' 0";
+        }
+        backerCount.textContent = count;
+      });
+    }
+
+    // 2. Micro-Verification Interaction
+    const btnYes = document.getElementById('btn-verify-yes');
+    const btnNo = document.getElementById('btn-verify-no');
+    const actionsBox = document.getElementById('verify-actions');
+    const thanksBox = document.getElementById('verify-thanks');
+
+    function handleVerify() {
+      if (actionsBox && thanksBox) {
+        actionsBox.classList.add('hidden');
+        thanksBox.classList.remove('hidden');
+        thanksBox.classList.add('flex');
+      }
+    }
+
+    if (btnYes) btnYes.addEventListener('click', handleVerify);
+    if (btnNo) btnNo.addEventListener('click', handleVerify);
+
+    // 3. Crew Cheer Interaction
+    const cheerBtn = document.getElementById('cheer-btn');
+    const cheerText = document.getElementById('cheer-text');
+    let cheered = false;
+    let cheerCount = 84;
+
+    if (cheerBtn && cheerText) {
+      cheerBtn.addEventListener('click', () => {
+        cheered = !cheered;
+        if (cheered) {
+          cheerCount++;
+          cheerText.textContent = 'Cheers Sent (' + cheerCount + ')';
+          cheerBtn.classList.add('bg-surface-container-highest');
+        } else {
+          cheerCount--;
+          cheerText.textContent = 'Send Cheers (' + cheerCount + ')';
+          cheerBtn.classList.remove('bg-surface-container-highest');
+        }
+      });
+    }
+  })();
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/85 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.04)]" data-active-classes="text-secondary"><div class="h-20 px-space-xs flex items-center justify-around"><a class="flex flex-col items-center justify-center gap-0.5 min-w-[44px] min-h-[44px] px-space-xs py-1 text-on-surface-variant hover:text-on-surface transition-colors" data-path="feed" href="#"><span class="material-symbols-outlined text-[22px]">forum</span><span class="font-label-sm text-label-sm">Feed</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[44px] min-h-[44px] px-space-xs py-1 text-on-surface-variant hover:text-on-surface transition-colors" data-path="nearby-map" href="#"><span class="material-symbols-outlined text-[22px]">location_on</span><span class="font-label-sm text-label-sm">Nearby Map</span></a><div class="relative flex items-center justify-center -top-3"><a class="flex flex-col items-center justify-center w-14 h-14 rounded-full bg-primary text-on-primary shadow-[0_4px_14px_rgba(0,0,0,0.22)] active:scale-95 transition-transform" data-path="report" href="#"><span class="material-symbols-outlined text-[26px]">add</span><span class="sr-only">Report</span></a></div><a class="relative flex flex-col items-center justify-center gap-0.5 min-w-[44px] min-h-[44px] px-space-xs py-1 text-on-surface-variant hover:text-on-surface transition-colors" data-path="alerts" href="#"><div class="relative flex items-center justify-center"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute -top-1 -right-2 inline-flex items-center justify-center min-w-[16px] h-4 px-1 rounded-full bg-error text-on-error font-tabular-sm text-tabular-sm leading-none font-bold">2</span></div><span class="font-label-sm text-label-sm">Alerts</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[44px] min-h-[44px] px-space-xs py-1 text-on-surface-variant hover:text-on-surface transition-colors" data-path="profile" href="#"><span class="material-symbols-outlined text-[22px]">badge</span><span class="font-label-sm text-label-sm">Profile</span></a></div></nav>
+</body></html>

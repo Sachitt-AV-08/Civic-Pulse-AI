@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "tertiary-container": "#341100", "on-secondary-fixed-variant": "#004397", "tertiary-fixed-dim": "#ffb690", "on-primary-fixed": "#011d34", "outline": "#74777e", "on-secondary": "#ffffff", "on-background": "#161c21", "on-error-container": "#93000a", "tertiary": "#000000", "on-tertiary-fixed": "#341100", "surface": "#f6faff", "primary": "#000000", "on-tertiary": "#ffffff", "inverse-primary": "#b0c9e7", "surface-bright": "#f6faff", "on-primary-fixed-variant": "#314962", "surface-container": "#e9eef5", "background": "#f6faff", "on-secondary-fixed": "#001a43", "secondary-fixed": "#d9e2ff", "surface-dim": "#d5dbe2", "surface-container-high": "#e3e9f0", "on-tertiary-container": "#d95f00", "surface-container-low": "#eff4fb", "secondary-container": "#5790ff", "error-container": "#ffdad6", "secondary": "#0259c5", "error": "#ba1a1a", "on-surface-variant": "#43474d", "surface-container-lowest": "#ffffff", "surface-container-highest": "#dde3ea", "on-error": "#ffffff", "on-surface": "#161c21", "on-primary-container": "#6e86a2", "primary-fixed-dim": "#b0c9e7", "on-primary": "#ffffff", "tertiary-fixed": "#ffdbca", "primary-fixed": "#d0e4ff", "surface-variant": "#dde3ea", "inverse-surface": "#2b3136", "secondary-fixed-dim": "#afc6ff", "on-secondary-container": "#002963", "primary-container": "#011d34", "outline-variant": "#c3c6cd", "inverse-on-surface": "#ecf1f8", "on-tertiary-fixed-variant": "#783200", "surface-tint": "#49607a" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "margin-md": "1.5rem", "margin": "1rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "space-md": "1rem", "gutter": "1rem", "margin-lg": "2.5rem", "gutter-lg": "1.5rem", "space-xl": "2rem", "space-lg": "1.5rem" }, "fontFamily": { "headline-sm": [ "Plus Jakarta Sans" ], "body-lg": [ "Inter" ], "display-lg": [ "Plus Jakarta Sans" ], "body-sm": [ "Inter" ], "tabular-sm": [ "Inter" ], "tabular-md": [ "Inter" ], "headline-lg": [ "Plus Jakarta Sans" ], "label-sm": [ "Inter" ], "headline-md": [ "Plus Jakarta Sans" ], "headline-lg-mobile": [ "Plus Jakarta Sans" ], "display-lg-mobile": [ "Plus Jakarta Sans" ], "label-md": [ "Inter" ], "body-md": [ "Inter" ], "title-md": [ "Plus Jakarta Sans" ] }, "fontSize": { "headline-sm": [ "20px", { "lineHeight": "28px", "fontWeight": "600" } ], "body-lg": [ "16px", { "lineHeight": "24px", "fontWeight": "400" } ], "display-lg": [ "44px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "body-sm": [ "12px", { "lineHeight": "16px", "fontWeight": "400" } ], "tabular-sm": [ "12px", { "lineHeight": "16px", "fontWeight": "500" } ], "tabular-md": [ "14px", { "lineHeight": "20px", "fontWeight": "500" } ], "headline-lg": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "600" } ], "label-sm": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "600" } ], "headline-md": [ "24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "headline-lg-mobile": [ "26px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "display-lg-mobile": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" } ], "label-md": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "600" } ], "body-md": [ "14px", { "lineHeight": "20px", "fontWeight": "400" } ], "title-md": [ "16px", { "lineHeight": "24px", "fontWeight": "600" } ] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 w-full z-50 bg-surface-container-lowest border-b border-[#DCE3EE] shadow-[0_2px_8px_-2px_rgba(0,28,51,0.06)]"><div class="h-20 w-full px-margin-lg flex items-center justify-between gap-space-lg"><div class="flex items-center gap-space-lg flex-shrink-0"><div class="flex items-center gap-space-sm"><div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center text-on-primary"><span class="material-symbols-outlined text-[24px]">account_balance</span></div><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight font-bold">Civic Pulse AI</span><span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed text-[10px] font-label-sm font-semibold tracking-wider uppercase"><span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>AI Triage Active</span></div><span class="font-label-sm text-label-sm text-on-surface-variant">Zone: Bengaluru East • Ward 112 (Indiranagar)</span></div></div></div><nav class="hidden xl:flex items-center h-full gap-space-md" data-active-classes="text-secondary font-semibold border-b-2 border-secondary"><a class="h-full flex items-center px- space-sm font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap" data-path="live-map-triage" href="#">Live Map &amp; Triage</a><a class="h-full flex items-center px-space-sm font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap" data-path="operations-queue" href="#">Operations Queue</a><a class="h-full flex items-center px-space-sm font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap" data-path="report-issue-ai-assistant" href="#">Report Issue (AI Assistant)</a><a class="h-full flex items-center px-space-sm font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap" data-path="public-impact-slas" href="#">Public Impact &amp; SLAs</a><a class="h-full flex items-center px-space-sm font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap" data-path="community-feed" href="#">Community Feed</a><a class="h-full flex items-center px-space-sm font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap" data-path="alerts" href="#">Alerts</a></nav><div class="flex items-center gap-space-md flex-shrink-0"><div class="hidden lg:flex items-center gap-2 px-space-sm py-1 rounded bg-surface-container-low border border-outline-variant"><span class="w-2 h-2 rounded-full bg-secondary animate-ping"></span><span class="font-tabular-sm text-tabular-sm text-on-surface-variant">Live Telemetry • 12s ago</span></div><div class="flex items-center p-0.5 bg-surface-container rounded-lg border border-outline-variant"><button class="px-2.5 py-1 text-[11px] font-label-sm font-medium rounded text-on-surface-variant hover:text-on-surface transition-all">Citizen</button><button class="px-2.5 py-1 text-[11px] font-label-sm font-semibold rounded bg-surface-container-lowest text-secondary shadow-[0_1px_3px_rgba(0,0,0,0.05)]">Officer</button></div><div class="flex items-center gap-1.5 px-2.5 py-1 rounded bg-error-container text-on-error-container border border-error/20 font-label-sm text-label-sm font-semibold whitespace-nowrap"><span class="material-symbols-outlined text-[16px] text-error">warning</span><span>2 Critical Overdue</span></div><div class="flex items-center gap-space-sm pl-space-sm border-l border-outline-variant"><div class="text-right hidden 2xl:block"><div class="font-label-md text-label-md text-on-surface font-semibold leading-tight">Inspector R. Sharma</div><div class="font-label-sm text-label-sm text-on-surface-variant leading-tight">Ward 112 Command</div></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><aside class="fixed left-0 top-20 bottom-0 w-64 bg-surface-container-lowest border-r border-[#DCE3EE] z-40 flex flex-col justify-between p-space-md"><div class="flex flex-col gap-space-md"><div class="px-space-sm py-1"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Operations Command</span></div><nav class="flex flex-col gap-1" data-active-classes="bg-secondary-fixed text-on-secondary-fixed font-semibold"><a class="flex items-center gap-3 px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all font-body-md text-body-md" data-path="live-map-triage" href="#"><span class="material-symbols-outlined text-[20px]">map</span><span>Live Map &amp; Triage</span></a><a class="flex items-center gap-3 px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all font-body-md text-body-md" data-path="operations-queue" href="#"><span class="material-symbols-outlined text-[20px]">inbox</span><span>Operations Queue</span></a><a class="flex items-center gap-3 px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all font-body-md text-body-md" data-path="report-issue-ai-assistant" href="#"><span class="material-symbols-outlined text-[20px]">smart_toy</span><span>AI Assistant Log</span></a><a class="flex items-center gap-3 px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all font-body-md text-body-md" data-path="public-impact-slas" href="#"><span class="material-symbols-outlined text-[20px]">query_stats</span><span>Impact &amp; SLAs</span></a><a class="flex items-center gap-3 px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all font-body-md text-body-md" data-path="community-feed" href="#"><span class="material-symbols-outlined text-[20px]">forum</span><span>Civic Feed</span></a><a class="flex items-center gap-3 px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all font-body-md text-body-md" data-path="alerts" href="#"><span class="material-symbols-outlined text-[20px]">notifications_active</span><span>Critical Alerts</span></a></nav></div><div class="p-space-sm rounded-lg bg-surface-container-low border border-outline-variant"><div class="flex items-center justify-between mb-1"><span class="font-label-sm text-label-sm text-on-surface font-semibold">Indiranagar 112 Grid</span><span class="w-2 h-2 rounded-full bg-secondary"></span></div><p class="font-body-sm text-body-sm text-on-surface-variant">99.8% System SLA compliance across active municipal dispatches.</p></div></aside><div class="pl-64"><main class="relative pt-20 w-full min-h-screen bg-background"><div class="flex flex-col w-full">
+<div class="px-margin-lg py-margin-md flex flex-col gap-space-lg">
+<!-- Top Hub Header -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="px-space-sm py-0.5 rounded-full bg-primary-container text-primary-fixed text-label-sm font-label-sm uppercase tracking-wider">Ops Telemetry Command</span>
+<span class="flex items-center gap-1.5 font-tabular-sm text-tabular-sm text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+            Sync Frequency: 1.2s • Node BLR-EAST-112
+          </span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Civic Operations Alerts &amp; Notifications Hub</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-4xl">
+          Real-time dispatch telemetry, SLA breach warnings, multi-agency escalation triggers, and community resolution updates for Ward 112.
+        </p>
+</div>
+<div class="flex items-center gap-space-sm flex-shrink-0">
+<button class="h-10 px-space-md bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md rounded flex items-center gap-2 transition-colors" id="mark-all-read-btn">
+<span class="material-symbols-outlined text-[18px]">done_all</span>
+<span>Mark All Read</span>
+</button>
+<div class="h-10 p-1 bg-surface-container-high rounded flex items-center gap-1">
+<button class="px-3 py-1 text-label-sm font-label-sm rounded bg-surface-container-lowest text-secondary shadow-sm font-semibold">Officer Mode</button>
+<button class="px-3 py-1 text-label-sm font-label-sm rounded text-on-surface-variant hover:text-on-surface">Citizen View</button>
+</div>
+<button class="h-10 px-space-md bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md rounded flex items-center gap-2 transition-all">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+<span>Matrix Rules</span>
+</button>
+</div>
+</div>
+<!-- Metrics Stat Bar -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-gutter-lg">
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Total Active Alerts</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-display-lg text-display-lg text-on-surface">19</span>
+<span class="font-tabular-sm text-tabular-sm text-on-surface-variant">/ 24h Queue</span>
+</div>
+<span class="mt-2 text-label-sm font-label-sm text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">trending_flat</span> Steady dispatch flow
+          </span>
+</div>
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[26px]">notifications_active</span>
+</div>
+</div>
+<div class="p-space-lg rounded-xl bg-error-container/40 shadow-sm flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-error-container uppercase tracking-wider font-semibold">Critical / Life-Safety</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-display-lg text-display-lg text-error">2</span>
+<span class="font-tabular-sm text-tabular-sm text-on-error-container font-semibold">Immediate Action</span>
+</div>
+<span class="mt-2 text-label-sm font-label-sm text-error flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-[14px]">warning</span> Statutory Escalation
+          </span>
+</div>
+<div class="w-12 h-12 rounded-lg bg-error text-on-error flex items-center justify-center animate-pulse">
+<span class="material-symbols-outlined text-[26px]">fmd_bad</span>
+</div>
+</div>
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">SLA Warnings (&lt;30m)</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-display-lg text-display-lg text-on-tertiary-container">5</span>
+<span class="font-tabular-sm text-tabular-sm text-on-surface-variant">Breach Risk</span>
+</div>
+<span class="mt-2 text-label-sm font-label-sm text-on-tertiary-container flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-[14px]">timer</span> Crew reassignment suggested
+          </span>
+</div>
+<div class="w-12 h-12 rounded-lg bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-[26px]">hourglass_top</span>
+</div>
+</div>
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Verified Resolutions</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-display-lg text-display-lg text-on-surface">12</span>
+<span class="font-tabular-sm text-tabular-sm text-on-surface-variant">Closed Today</span>
+</div>
+<span class="mt-2 text-label-sm font-label-sm text-secondary font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">verified</span> 100% Cryptographic OTPs
+          </span>
+</div>
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[26px]">verified_user</span>
+</div>
+</div>
+</div>
+<!-- Filter Tab Bar -->
+<div class="flex items-center justify-between gap-space-md flex-wrap">
+<div class="flex items-center gap-space-xs overflow-x-auto py-1">
+<button class="filter-tab px-space-md py-2 rounded-lg font-label-md text-label-md bg-secondary text-on-secondary shadow-sm transition-all whitespace-nowrap" data-filter="all">
+          All Alerts (19)
+        </button>
+<button class="filter-tab px-space-md py-2 rounded-lg font-label-md text-label-md bg-surface-container-lowest text-on-surface-variant hover:text-on-surface shadow-sm transition-all whitespace-nowrap" data-filter="critical">
+          Critical Life-Safety (2)
+        </button>
+<button class="filter-tab px-space-md py-2 rounded-lg font-label-md text-label-md bg-surface-container-lowest text-on-surface-variant hover:text-on-surface shadow-sm transition-all whitespace-nowrap" data-filter="sla">
+          SLA Breaches &amp; Warnings (5)
+        </button>
+<button class="filter-tab px-space-md py-2 rounded-lg font-label-md text-label-md bg-surface-container-lowest text-on-surface-variant hover:text-on-surface shadow-sm transition-all whitespace-nowrap" data-filter="agency">
+          Agency Dispatches (7)
+        </button>
+<button class="filter-tab px-space-md py-2 rounded-lg font-label-md text-label-md bg-surface-container-lowest text-on-surface-variant hover:text-on-surface shadow-sm transition-all whitespace-nowrap" data-filter="community">
+          Community Updates (5)
+        </button>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Telemetry Mode:</span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Auto-Dispatch Broadcast Enabled
+        </span>
+</div>
+</div>
+<!-- Main Grid: 8 Cols Stream, 4 Cols Ops Intelligence -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-gutter-lg items-start">
+<!-- Left Column (8 cols): Chronological Alert Timeline & Action Stream -->
+<div class="xl:col-span-8 flex flex-col gap-space-lg">
+<!-- Group 1: Critical / Urgent Escalations -->
+<div class="flex flex-col gap-space-md" data-group="critical">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-error animate-ping"></span>
+<h2 class="font-title-md text-title-md text-on-surface font-bold">Group 1: Critical &amp; Urgent Escalations (Today - Real-Time)</h2>
+</div>
+<span class="font-tabular-sm text-tabular-sm text-error font-semibold">2 Critical Overrides Active</span>
+</div>
+<!-- Alert Item 1: Severe 11kV Feeder Line -->
+<div class="alert-card p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md relative overflow-hidden transition-all hover:shadow-md" data-category="critical sla">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-error animate-pulse"></div>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm pl-2">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="px-2.5 py-1 rounded font-label-sm text-label-sm font-semibold uppercase bg-error-container text-on-error-container flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">e911_emergency</span>
+                  Emergency SLA Warning (&lt;15m Remaining)
+                </span>
+<span class="px-2 py-0.5 rounded font-label-sm text-label-sm bg-surface-container-high text-on-surface-variant font-semibold">
+                  Incident #CV-8490
+                </span>
+<span class="px-2 py-0.5 rounded font-label-sm text-label-sm bg-secondary-fixed text-on-secondary-fixed font-semibold">
+                  AI Triage Confidence: 99.4%
+                </span>
+</div>
+<span class="font-tabular-sm text-tabular-sm text-on-surface-variant">2 mins ago • Telemetry Node #BLR-112-E</span>
+</div>
+<div class="pl-2 flex flex-col lg:flex-row gap-space-md">
+<div class="flex-1 flex flex-col gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">11kV Feeder Line Severed near National Public School</h3>
+<p class="font-body-md text-body-md text-on-surface">
+                  High-voltage electrical conductor grounded across 12th Main Road. Citizens' Charter 2-hour safety breach triggered in <strong>14 minutes</strong>. BESCOM Quick Response Unit #41 is 1.2km away with 8m ETA.
+                </p>
+<div class="flex items-center gap-space-md mt-2 flex-wrap font-tabular-sm text-tabular-sm text-on-surface-variant bg-surface-container-low p-space-sm rounded-lg">
+<span class="flex items-center gap-1 text-error font-semibold">
+<span class="material-symbols-outlined text-[16px]">alarm</span> Elapsed: 1h 46m / 2h Limit
+                  </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">navigation</span> Dispatch: BESCOM QRU-41
+                  </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span> Indiranagar 12th Main
+                  </span>
+</div>
+</div>
+<!-- Mini Incident Context Snippet -->
+<div class="w-full lg:w-48 flex-shrink-0 flex flex-col justify-between p-space-sm rounded-lg bg-surface-container">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-semibold">Impact Assessment</span>
+<div class="flex flex-col my-1">
+<span class="font-title-md text-title-md text-on-surface font-bold">850+ Pedestrians</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">School evacuation route</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-1.5 overflow-hidden">
+<div class="bg-error h-1.5 rounded-full" style="width: 88%"></div>
+</div>
+</div>
+</div>
+<div class="pl-2 pt-space-xs flex items-center justify-between gap-space-sm flex-wrap">
+<div class="flex items-center gap-space-xs flex-wrap">
+<button class="h-9 px-3 rounded bg-primary text-on-primary hover:bg-primary-container font-label-md text-label-md flex items-center gap-1.5 transition-all">
+<span class="material-symbols-outlined text-[16px]">near_me</span>
+                  Track Crew GPS Live
+                </button>
+<button class="h-9 px-3 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center gap-1.5 transition-all">
+<span class="material-symbols-outlined text-[16px]">shield_person</span>
+                  Dispatch Backup Marshall
+                </button>
+<button class="h-9 px-3 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center gap-1.5 transition-all">
+<span class="material-symbols-outlined text-[16px]">sms</span>
+                  Send Resident SMS Advisory (500m)
+                </button>
+</div>
+<button class="text-secondary font-label-md text-label-md hover:underline flex items-center gap-1">
+                Forensic Audit Trail <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Alert Item 2: Breach Penalty Logged -->
+<div class="alert-card p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md relative overflow-hidden transition-all hover:shadow-md" data-category="critical sla">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-error"></div>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm pl-2">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="px-2.5 py-1 rounded font-label-sm text-label-sm font-semibold uppercase bg-error text-on-error flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">gavel</span>
+                  Automatic SLA Breach Penalty Logged
+                </span>
+<span class="px-2 py-0.5 rounded font-label-sm text-label-sm bg-surface-container-high text-on-surface-variant font-semibold">
+                  Incident #CV-8472
+                </span>
+<span class="px-2 py-0.5 rounded font-label-sm text-label-sm bg-error-container text-on-error-container font-semibold">
+                  Breach +46m
+                </span>
+</div>
+<span class="font-tabular-sm text-tabular-sm text-on-surface-variant">14 mins ago • Municipal Audit Ledger</span>
+</div>
+<div class="pl-2 flex flex-col lg:flex-row gap-space-md">
+<div class="flex-1 flex flex-col gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Multiple Deep Asphalt Craters on CMH Road Exceeded 4h Window</h3>
+<p class="font-body-md text-body-md text-on-surface">
+                  Statutory breach penalty of <strong class="text-error">₹10,000/hr</strong> actively debited against BBMP Road Infrastructure Contractor #04. Incident escalated directly to Zonal Municipal Commissioner and District Public Dashboard.
+                </p>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-sm mt-2 p-space-sm bg-surface-container-low rounded-lg font-tabular-sm text-tabular-sm">
+<div>
+<span class="block text-on-surface-variant text-[11px]">Contractor Assigned</span>
+<span class="font-semibold text-on-surface">M/S InfraTech Ward 112</span>
+</div>
+<div>
+<span class="block text-on-surface-variant text-[11px]">Accumulated Penalty</span>
+<span class="font-semibold text-error">₹10,000 (Hour 1 Charged)</span>
+</div>
+<div>
+<span class="block text-on-surface-variant text-[11px]">Next Penalty Tier</span>
+<span class="font-semibold text-on-surface">₹20,000 at +1h 14m</span>
+</div>
+</div>
+</div>
+<!-- Media Evidence Thumbnail Preview -->
+<div class="w-full lg:w-48 flex-shrink-0 flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold">Telemetry Sensor Image</span>
+<img class="w-full h-24 object-cover rounded-lg" data-alt="Close up street photograph of deep hazardous rain filled asphalt pothole crater on Indian municipal city asphalt road marked with high visibility caution cone under daytime lighting in Bengaluru." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRnkcNxSflTwTJlH7Cn-TIOC93qYiD6OY4h9ts-cSO-FOS_Ireeh7wUMxr0MNfRDMttVXXV1yKuCC7hPk8p7MHycCp2Y6hksLR2XOhT6PCaEuw1ttE3Au3tulG1dZpR_RNz2W1OJVaUnXsuk2mlv9XxFaQph6hkkZ8t2KCJqgexnDq6DO7w5jyvdTswGXAjDkuYemon-FLJF5S5o9MPVcOOU-uUwS4PzsWpg7swfM"/>
+<span class="font-label-sm text-label-sm text-on-surface-variant text-center">Depth: 18cm • Geotagged</span>
+</div>
+</div>
+<div class="pl-2 pt-space-xs flex items-center justify-between gap-space-sm flex-wrap">
+<div class="flex items-center gap-space-xs flex-wrap">
+<button class="h-9 px-3 rounded bg-error text-on-error hover:opacity-90 font-label-md text-label-md flex items-center gap-1.5 transition-all">
+<span class="material-symbols-outlined text-[16px]">receipt_long</span>
+                  View Breach Ledger Notice
+                </button>
+<button class="h-9 px-3 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center gap-1.5 transition-all">
+<span class="material-symbols-outlined text-[16px]">precision_manufacturing</span>
+                  Reassign to Emergency Paving Fleet
+                </button>
+</div>
+<span class="font-tabular-sm text-tabular-sm text-on-surface-variant">Escalation ID: ESC-9921-BBMP</span>
+</div>
+</div>
+</div>
+<!-- Group 2: Agency Dispatch & Operational Progress -->
+<div class="flex flex-col gap-space-md" data-group="agency">
+<div class="flex items-center justify-between">
+<h2 class="font-title-md text-title-md text-on-surface font-bold">Group 2: Agency Dispatch &amp; Operational Progress (Today)</h2>
+<span class="font-tabular-sm text-tabular-sm text-on-surface-variant">4 Active Dispatches Running</span>
+</div>
+<!-- Alert Item 3: Multi-Agency Co-Responder -->
+<div class="alert-card p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md relative overflow-hidden transition-all hover:shadow-md" data-category="agency">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-secondary"></div>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm pl-2">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="px-2.5 py-1 rounded font-label-sm text-label-sm font-semibold uppercase bg-secondary-fixed text-on-secondary-fixed flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">hub</span>
+                  Multi-Agency Co-Responder Dispatched
+                </span>
+<span class="px-2 py-0.5 rounded font-label-sm text-label-sm bg-surface-container-high text-on-surface-variant font-semibold">
+                  Incident #CV-8491
+                </span>
+</div>
+<span class="font-tabular-sm text-tabular-sm text-on-surface-variant">38 mins ago • Quad-Agency Bridge</span>
+</div>
+<div class="pl-2 flex flex-col gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">High-Pressure Water Conduit Rupture on HAL 2nd Stage Double Road</h3>
+<p class="font-body-md text-body-md text-on-surface">
+                BWSSB Quick Works Valve Unit 3 arrived on site. BESCOM automated protocol initiated to isolate underground 440V distribution conduits prior to heavy excavation. Traffic Police Ward 112 re-routing northbound flow.
+              </p>
+<div class="flex items-center gap-space-md mt-2 flex-wrap font-tabular-sm text-tabular-sm bg-surface-container-low p-space-sm rounded-lg">
+<span class="flex items-center gap-1.5 text-on-surface font-medium">
+<span class="w-2 h-2 rounded-full bg-secondary"></span> BWSSB: Valve Shutoff (In-Progress)
+                </span>
+<span class="flex items-center gap-1.5 text-on-surface font-medium">
+<span class="w-2 h-2 rounded-full bg-secondary"></span> BESCOM: Isolation Confirmed
+                </span>
+<span class="flex items-center gap-1.5 text-on-surface font-medium">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed-dim"></span> Traffic Police: Diversion Placed
+                </span>
+</div>
+</div>
+<div class="pl-2 pt-space-xs flex items-center justify-between gap-space-sm flex-wrap">
+<div class="flex items-center gap-space-xs flex-wrap">
+<button class="h-9 px-3 rounded bg-primary text-on-primary hover:bg-primary-container font-label-md text-label-md flex items-center gap-1.5 transition-all">
+<span class="material-symbols-outlined text-[16px]">sensors</span>
+                  View Incident Telemetry
+                </button>
+<button class="h-9 px-3 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center gap-1.5 transition-all">
+<span class="material-symbols-outlined text-[16px]">sync_alt</span>
+                  Update Inter-Agency Status
+                </button>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Quad-Bridge Link Active</span>
+</div>
+</div>
+<!-- Alert Item 4: AI Triage Deduplication -->
+<div class="alert-card p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md relative overflow-hidden transition-all hover:shadow-md" data-category="agency">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-secondary-container"></div>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm pl-2">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="px-2.5 py-1 rounded font-label-sm text-label-sm font-semibold uppercase bg-surface-container text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">psychology</span>
+                  AI Triage Satellite Deduplication
+                </span>
+<span class="px-2.5 py-0.5 rounded font-label-sm text-label-sm bg-secondary-fixed text-on-secondary-fixed font-semibold">
+                  Match 98.2%
+                </span>
+</div>
+<span class="font-tabular-sm text-tabular-sm text-on-surface-variant">1 hr ago • Neural Engine v4.2</span>
+</div>
+<div class="pl-2 flex flex-col gap-space-xs">
+<h3 class="font-title-md text-title-md text-on-surface font-bold">Consolidated 4 Independent Citizen Reports into Master Dispatch #CV-8472</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                Computer vision paired street-view photos from citizens with telemetry radar, verifying identical pothole geometry across 100m radius on CMH Road. Prevented redundant crew dispatch and saved estimated ₹14,500 in municipal fuel allocations.
+              </p>
+</div>
+<div class="pl-2 pt-space-xs flex items-center justify-between gap-space-sm flex-wrap">
+<button class="h-9 px-3 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center gap-1.5 transition-all">
+<span class="material-symbols-outlined text-[16px]">compare</span>
+                Review Merged Media (4 Sources)
+              </button>
+<span class="font-tabular-sm text-tabular-sm text-on-surface-variant">Deduplication ID: #DEDUP-88402</span>
+</div>
+</div>
+</div>
+<!-- Group 3: Citizen Resolution & Audit Verification -->
+<div class="flex flex-col gap-space-md" data-group="community">
+<div class="flex items-center justify-between">
+<h2 class="font-title-md text-title-md text-on-surface font-bold">Group 3: Citizen Resolution &amp; Audit Verification</h2>
+<span class="font-tabular-sm text-tabular-sm text-secondary font-semibold">12 Verified Today</span>
+</div>
+<!-- Alert Item 5: Resolution Audit Verified (Green Success) -->
+<div class="alert-card p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md relative overflow-hidden transition-all hover:shadow-md" data-category="community">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-on-tertiary-container"></div>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm pl-2">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="px-2.5 py-1 rounded font-label-sm text-label-sm font-semibold uppercase bg-surface-container-high text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">task_alt</span>
+                  Resolution Audit Verified &amp; Signed
+                </span>
+<span class="px-2 py-0.5 rounded font-label-sm text-label-sm bg-surface-container-high text-on-surface-variant font-semibold">
+                  Incident #CV-8402
+                </span>
+<span class="px-2 py-0.5 rounded font-label-sm text-label-sm bg-surface-container text-secondary font-semibold">
+                  100% SLA Compliance
+                </span>
+</div>
+<span class="font-tabular-sm text-tabular-sm text-on-surface-variant">2 hrs ago • Cryptographic Civic Ledger</span>
+</div>
+<div class="pl-2 flex flex-col lg:flex-row gap-space-md">
+<div class="flex-1 flex flex-col gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Commercial Waste Dump Cleared at Metro Pillar 42</h3>
+<p class="font-body-md text-body-md text-on-surface">
+                  Solid waste segregation unit sanitized sidewalk. Closed upon receiving 2 citizen OTP verifications and before/after geofenced photography. Micro-penalty reversed for area sanitation beat officer.
+                </p>
+<div class="flex items-center gap-space-md mt-2 flex-wrap font-tabular-sm text-tabular-sm text-on-surface-variant bg-surface-container-low p-space-sm rounded-lg">
+<span class="flex items-center gap-1 text-on-surface font-medium">
+<span class="material-symbols-outlined text-[16px]">pin_drop</span> Geofence: Radius 12m match
+                  </span>
+<span class="flex items-center gap-1 text-on-surface font-medium">
+<span class="material-symbols-outlined text-[16px]">fingerprint</span> OTP Hashes: Verified (x2)
+                  </span>
+</div>
+</div>
+<!-- Before / After Photo Proof -->
+<div class="w-full lg:w-48 flex-shrink-0 flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold">Resolution Photographic Audit</span>
+<img class="w-full h-24 object-cover rounded-lg" data-alt="Clean cleared municipal sidewalk curb next to elevated concrete metro train pillar with waste removed and clean swept ground in bright morning daylight in Bengaluru urban district." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD57AYkxqIJsx0gl6LHo8D6CbVZ97xC9IhohyvUUlalkZIEpxRmx5Zc5ReFv7ZRNfLA90G3GpsEjxHdQzMDI59QJpAzfS_NQOBKPYLn82psgpayAT-kR-3RNONLWksbq6_TbDiuTXe2g5pYf84agpVUCHNS4wIEd086aMBYs3lTLGM9H0Kg4yufZcWQhlHUb77CwiH1kMhCOT-dlSu6D0gRVUGV78hEgxworRBzzzk"/>
+<span class="font-label-sm text-label-sm text-on-surface-variant text-center">Post-Remediation Hash #002</span>
+</div>
+</div>
+<div class="pl-2 pt-space-xs flex items-center justify-between gap-space-sm flex-wrap">
+<button class="h-9 px-3 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center gap-1.5 transition-all">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+                View Public Audit Certificate
+              </button>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-tabular-sm">Ledger Hash: 0x9b4a...f721</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column (4 cols): Alert Intelligence, Subscription Preferences & Protocols -->
+<div class="xl:col-span-4 flex flex-col gap-space-lg">
+<!-- Card 1: Escalation Matrix & Charter SLA Rules -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[22px]">account_tree</span>
+<h3 class="font-title-md text-title-md text-on-surface font-bold">Escalation Matrix &amp; SLAs</h3>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-semibold">Statutory Act 2011</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Under Karnataka Sakala Services Act, incidents follow automated bureaucratic promotion based on elapsed response time.
+          </p>
+<!-- Vertical Stepper Progress -->
+<div class="flex flex-col gap-space-md relative pl-6 border-l-2 border-surface-container mt-2">
+<!-- Tier 1 -->
+<div class="relative flex flex-col gap-1">
+<span class="absolute -left-[31px] top-1 w-3.5 h-3.5 rounded-full bg-secondary"></span>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-bold text-on-surface">Tier 1: Field Unit Dispatch</span>
+<span class="font-tabular-sm text-tabular-sm text-on-surface-variant">0 - 15m</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Automatic GPS routing to nearest squad vehicle within 2.5km radius.</p>
+</div>
+<!-- Tier 2 -->
+<div class="relative flex flex-col gap-1">
+<span class="absolute -left-[31px] top-1 w-3.5 h-3.5 rounded-full bg-secondary"></span>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-bold text-on-surface">Tier 2: Asst. Executive Engineer Alert</span>
+<span class="font-tabular-sm text-tabular-sm text-on-tertiary-container font-semibold">50% SLA Elapsed</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Supervisory phone ping &amp; dashboard escalation triggered automatically.</p>
+</div>
+<!-- Tier 3 -->
+<div class="relative flex flex-col gap-1">
+<span class="absolute -left-[31px] top-1 w-3.5 h-3.5 rounded-full bg-on-tertiary-container"></span>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-bold text-on-surface">Tier 3: Chief Engineer &amp; Zonal Commissioner</span>
+<span class="font-tabular-sm text-tabular-sm text-on-tertiary-container font-semibold">75% SLA Elapsed</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Multi-agency hotline conference opened, contractor alert warning posted.</p>
+</div>
+<!-- Tier 4 -->
+<div class="relative flex flex-col gap-1">
+<span class="absolute -left-[31px] top-1 w-3.5 h-3.5 rounded-full bg-error animate-ping"></span>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-bold text-error">Tier 4: Statutory Penalty &amp; MLA Ping</span>
+<span class="font-tabular-sm text-tabular-sm text-error font-bold">100% SLA Breach</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">₹10,000/hr contractor forfeit logged + published directly to Civic Open Data Portal.</p>
+</div>
+</div>
+<div class="p-space-sm rounded bg-surface-container flex items-center justify-between text-on-surface">
+<span class="font-body-sm text-body-sm font-medium">Auto-Escalation Engine</span>
+<span class="font-label-sm text-label-sm font-semibold text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">bolt</span> Running Active
+            </span>
+</div>
+</div>
+<!-- Card 2: Notification Delivery Channels -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[22px]">cell_tower</span>
+<h3 class="font-title-md text-title-md text-on-surface font-bold">Delivery Channels</h3>
+</div>
+<button class="font-label-sm text-label-sm text-secondary hover:underline font-semibold">Edit Matrix</button>
+</div>
+<div class="flex flex-col gap-space-sm">
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[18px]">notifications</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Push Notifications</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">High-Priority Siren for Tier 1</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded font-label-sm text-label-sm bg-secondary-fixed text-on-secondary-fixed font-semibold">Active</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">WhatsApp Dispatch Bot</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">+91 98450 XXXXX (Encrypted)</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded font-label-sm text-label-sm bg-secondary-fixed text-on-secondary-fixed font-semibold">Enabled</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[18px]">campaign</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Control Room Broadcast</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Audio alarm on Life-Safety</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded font-label-sm text-label-sm bg-secondary-fixed text-on-secondary-fixed font-semibold">Armed</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[18px]">cell_wifi</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Public SMS Blast</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Geofenced 500m radius</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded font-label-sm text-label-sm bg-surface-container-high text-on-surface font-semibold">Standby</span>
+</div>
+</div>
+</div>
+<!-- Card 3: Mute & Maintenance Windows -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[22px]">cloud_sync</span>
+<h3 class="font-title-md text-title-md text-on-surface font-bold">Mute &amp; Maintenance Windows</h3>
+</div>
+<div class="p-space-md rounded-lg bg-surface-container-low flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-bold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-secondary">thunderstorm</span>
+                Monsoon Alert Protocol
+              </span>
+<span class="px-2 py-0.5 rounded font-label-sm text-label-sm bg-error-container text-on-error-container font-semibold">Override Active</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Active until <strong>November 15</strong>: In accordance with disaster management protocols, all weather, drainage surcharge, and waterlogging alerts <strong>bypass Do-Not-Disturb settings</strong> on officer handsets.
+            </p>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-tabular-sm text-tabular-sm text-on-surface-variant">Next Routine Audit: Sunday 03:00 IST</span>
+<button class="font-label-sm text-label-sm text-secondary hover:underline font-semibold">Protocol Specs</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Tab Filter Interaction
+  const filterTabs = document.querySelectorAll('.filter-tab');
+  const alertCards = document.querySelectorAll('.alert-card');
+
+  filterTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Toggle Tab Active Classes
+      filterTabs.forEach(t => {
+        t.classList.remove('bg-secondary', 'text-on-secondary');
+        t.classList.add('bg-surface-container-lowest', 'text-on-surface-variant');
+      });
+      tab.classList.remove('bg-surface-container-lowest', 'text-on-surface-variant');
+      tab.classList.add('bg-secondary', 'text-on-secondary');
+
+      const filterValue = tab.getAttribute('data-filter');
+
+      alertCards.forEach(card => {
+        const categories = card.getAttribute('data-category') || '';
+        if (filterValue === 'all' || categories.includes(filterValue)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // Mark all as read micro-interaction
+  const markAllBtn = document.getElementById('mark-all-read-btn');
+  if (markAllBtn) {
+    markAllBtn.addEventListener('click', () => {
+      markAllBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">check</span><span>Queue Acknowledged</span>';
+      markAllBtn.classList.add('bg-surface-container-high', 'text-secondary');
+    });
+  }
+</script></main></div></body></html>

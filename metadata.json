@@ -1,0 +1,6 @@
+{
+  "name": "Civic Pulse AI",
+  "description": "AI-driven municipal triage and mission-critical dispatch command center bridging 311/911 telemetry, real-time routing, SLA tracking, and audit trails.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
