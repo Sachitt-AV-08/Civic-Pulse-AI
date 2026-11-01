@@ -9,6 +9,7 @@ backend/uploads/
 # Node / frontend
 frontend/node_modules/
 frontend/dist/
+frontend/tmp/
 npm-debug.log*
 
 # Local environment
@@ -20,3 +21,8 @@ npm-debug.log*
 Thumbs.db
 .vscode/
 .idea/
+
+# Generated design assets (keep originals separate from deployable source)
+public/stitch/
+public/assets/aistudio/
+stitch_*
