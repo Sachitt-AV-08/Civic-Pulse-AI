@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.db
+*.db-journal
+backend/uploads/
+
+# Node / frontend
+frontend/node_modules/
+frontend/dist/
+npm-debug.log*
+
+# Local environment
+.env
+.env.*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
