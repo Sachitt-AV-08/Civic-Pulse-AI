@@ -1,8 +1,4 @@
-"""Small SQLite persistence layer.
-
-The project intentionally uses only the Python standard library so the backend
-can run in a fresh hackathon environment without installing database drivers.
-"""
+"""Small SQLite persistence layer."""
 from __future__ import annotations
 
 import sqlite3
@@ -31,6 +27,8 @@ CREATE TABLE IF NOT EXISTS issues (
     ai_reason TEXT,
     duplicate_of TEXT,
     reported_count INTEGER NOT NULL DEFAULT 1,
+    support_count INTEGER NOT NULL DEFAULT 0,
+    comment_count INTEGER NOT NULL DEFAULT 0,
     sla_hours INTEGER NOT NULL DEFAULT 48,
     created_at TEXT NOT NULL,
     updated_at TEXT NOT NULL,
@@ -57,9 +55,28 @@ CREATE TABLE IF NOT EXISTS ratings (
     FOREIGN KEY(issue_id) REFERENCES issues(id)
 );
 
+CREATE TABLE IF NOT EXISTS issue_comments (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    issue_id TEXT NOT NULL,
+    author TEXT NOT NULL,
+    body TEXT NOT NULL,
+    created_at TEXT NOT NULL,
+    FOREIGN KEY(issue_id) REFERENCES issues(id)
+);
+
+CREATE TABLE IF NOT EXISTS issue_supports (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    issue_id TEXT NOT NULL,
+    actor_label TEXT NOT NULL DEFAULT 'Anonymous resident',
+    created_at TEXT NOT NULL,
+    FOREIGN KEY(issue_id) REFERENCES issues(id)
+);
+
 CREATE INDEX IF NOT EXISTS idx_issues_status ON issues(status);
 CREATE INDEX IF NOT EXISTS idx_issues_category ON issues(category);
 CREATE INDEX IF NOT EXISTS idx_issues_location ON issues(latitude, longitude);
+CREATE INDEX IF NOT EXISTS idx_comments_issue ON issue_comments(issue_id);
+CREATE INDEX IF NOT EXISTS idx_supports_issue ON issue_supports(issue_id);
 """
 
 
@@ -83,7 +100,23 @@ def db_session():
 def init_db() -> None:
     with db_session() as connection:
         connection.executescript(SCHEMA)
-
-
-def row_to_dict(row: sqlite3.Row) -> dict:
-    return dict(row) if row is not None else None
+        issue_columns = {row["name"] for row in connection.execute("PRAGMA table_info(issues)")}
+        if "support_count" not in issue_columns:
+            connection.execute("ALTER TABLE issues ADD COLUMN support_count INTEGER NOT NULL DEFAULT 0")
+        if "comment_count" not in issue_columns:
+            connection.execute("ALTER TABLE issues ADD COLUMN comment_count INTEGER NOT NULL DEFAULT 0")
+        # Backfill counts for an existing database.
+        connection.execute(
+            """
+            UPDATE issues SET support_count = (
+                SELECT COUNT(*) FROM issue_supports WHERE issue_supports.issue_id = issues.id
+            )
+            """
+        )
+        connection.execute(
+            """
+            UPDATE issues SET comment_count = (
+                SELECT COUNT(*) FROM issue_comments WHERE issue_comments.issue_id = issues.id
+            )
+            """
+        )

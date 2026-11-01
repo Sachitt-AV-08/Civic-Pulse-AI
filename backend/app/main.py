@@ -17,14 +17,18 @@ from pydantic import BaseModel
 from .db import DB_PATH, db_session, get_connection, init_db
 from .schemas import (
     CategoryMeta,
+    CommunityCommentCreate,
+    CommunityCommentRead,
     DepartmentMeta,
     IssueCreate,
     IssueFilter,
     IssueRead,
+    IssueSupportCreate,
     RatingCreate,
     SeedRequest,
     StatsRead,
     StatusUpdate,
+    SupportRead,
 )
 from . import triage
 from . import seed
@@ -102,6 +106,8 @@ def issue_row_to_read(row) -> dict[str, Any]:
         "ai_reason": row["ai_reason"] or "",
         "duplicate_of": row["duplicate_of"],
         "reported_count": int(row["reported_count"]),
+        "support_count": int(row["support_count"]) if "support_count" in row.keys() else 0,
+        "comment_count": int(row["comment_count"]) if "comment_count" in row.keys() else 0,
         "sla_hours": int(row["sla_hours"]),
         "created_at": row["created_at"],
         "updated_at": row["updated_at"],
@@ -262,6 +268,115 @@ def rate_issue(issue_id: str, payload: RatingCreate, connection=Depends(db_dep))
     )
     connection.commit()
     return {"ok": True, "issue_id": issue_id, "score": payload.score}
+
+
+@app.get("/issues/{issue_id}/comments", response_model=list[CommunityCommentRead])
+def list_comments(issue_id: str, connection=Depends(db_dep)):
+    issue = connection.execute("SELECT 1 FROM issues WHERE id=?", (issue_id,)).fetchone()
+    if issue is None:
+        raise HTTPException(status_code=404, detail="Issue not found")
+    rows = connection.execute(
+        """
+        SELECT comments.id, comments.issue_id, comments.author, comments.body, comments.created_at,
+               issues.title AS issue_title, issues.category AS issue_category
+        FROM issue_comments AS comments
+        LEFT JOIN issues ON issues.id = comments.issue_id
+        WHERE comments.issue_id=?
+        ORDER BY comments.created_at DESC
+        """,
+        (issue_id,),
+    ).fetchall()
+    return [dict(row) for row in rows]
+
+
+@app.post("/issues/{issue_id}/comments", response_model=CommunityCommentRead, status_code=201)
+def add_comment(issue_id: str, payload: CommunityCommentCreate, connection=Depends(db_dep)):
+    issue = connection.execute("SELECT 1 FROM issues WHERE id=?", (issue_id,)).fetchone()
+    if issue is None:
+        raise HTTPException(status_code=404, detail="Issue not found")
+
+    author = (payload.author or "Resident").strip()[:40] or "Resident"
+    timestamp = format_dt(now_utc())
+    connection.execute(
+        "INSERT INTO issue_comments (issue_id, author, body, created_at) VALUES (?,?,?,?)",
+        (issue_id, author, payload.body.strip(), timestamp),
+    )
+    connection.execute(
+        "UPDATE issues SET comment_count = comment_count + 1, updated_at=? WHERE id=?",
+        (timestamp, issue_id),
+    )
+    connection.commit()
+    row = connection.execute(
+        """
+        SELECT comments.id, comments.issue_id, comments.author, comments.body, comments.created_at,
+               issues.title AS issue_title, issues.category AS issue_category
+        FROM issue_comments AS comments
+        LEFT JOIN issues ON issues.id = comments.issue_id
+        WHERE comments.issue_id=? AND comments.created_at=? AND comments.author=?
+        ORDER BY comments.id DESC LIMIT 1
+        """,
+        (issue_id, timestamp, author),
+    ).fetchone()
+    return dict(row)
+
+
+@app.post("/issues/{issue_id}/support", response_model=SupportRead)
+def support_issue(issue_id: str, payload: IssueSupportCreate, connection=Depends(db_dep)):
+    issue = connection.execute("SELECT * FROM issues WHERE id=?", (issue_id,)).fetchone()
+    if issue is None:
+        raise HTTPException(status_code=404, detail="Issue not found")
+
+    timestamp = format_dt(now_utc())
+    actor = (payload.actor_label or "Resident").strip()[:40] or "Resident"
+    connection.execute(
+        "INSERT INTO issue_supports (issue_id, actor_label, created_at) VALUES (?,?,?)",
+        (issue_id, actor, timestamp),
+    )
+    connection.execute(
+        "UPDATE issues SET support_count = support_count + 1, updated_at=? WHERE id=?",
+        (timestamp, issue_id),
+    )
+    connection.commit()
+    count = connection.execute("SELECT support_count FROM issues WHERE id=?", (issue_id,)).fetchone()["support_count"]
+    return {"issue_id": issue_id, "support_count": count}
+
+
+@app.get("/community/feed")
+def community_feed(connection=Depends(db_dep)):
+    trending = connection.execute(
+        """
+        SELECT id, title, category, department, status, support_count, comment_count,
+               latitude, longitude, created_at
+        FROM issues
+        ORDER BY (support_count * 2 + comment_count) DESC, created_at DESC
+        LIMIT 6
+        """
+    ).fetchall()
+
+    recent_comments = connection.execute(
+        """
+        SELECT comments.id, comments.issue_id, comments.author, comments.body, comments.created_at,
+               issues.title AS issue_title, issues.category AS issue_category
+        FROM issue_comments AS comments
+        LEFT JOIN issues ON issues.id = comments.issue_id
+        ORDER BY comments.created_at DESC
+        LIMIT 8
+        """
+    ).fetchall()
+
+    opened = connection.execute("SELECT COUNT(*) AS count FROM issues").fetchone()["count"]
+    commented = connection.execute("SELECT COUNT(*) AS count FROM issue_comments").fetchone()["count"]
+    supported = connection.execute("SELECT COUNT(*) AS count FROM issue_supports").fetchone()["count"]
+
+    return {
+        "trending_issues": [dict(row) for row in trending],
+        "recent_comments": [dict(row) for row in recent_comments],
+        "stats": {
+            "issues": opened,
+            "comments": commented,
+            "supports": supported,
+        },
+    }
 
 
 @app.post("/admin/seed-reset")

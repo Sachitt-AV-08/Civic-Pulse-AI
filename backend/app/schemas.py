@@ -35,6 +35,8 @@ class IssueRead(BaseModel):
     ai_reason: str
     duplicate_of: Optional[str]
     reported_count: int
+    support_count: int = 0
+    comment_count: int = 0
     sla_hours: int
     created_at: str
     updated_at: str
@@ -98,6 +100,29 @@ class StatsRead(BaseModel):
     by_severity: dict
     recent_daily: List[dict]
     duplicate_rate: float
+
+
+class CommunityCommentCreate(BaseModel):
+    author: Optional[str] = "Resident"
+    body: str = Field(min_length=3, max_length=1000)
+
+
+class CommunityCommentRead(BaseModel):
+    id: int
+    issue_id: str
+    author: str
+    body: str
+    created_at: str
+    issue_title: Optional[str] = None
+    issue_category: Optional[str] = None
+
+class SupportRead(BaseModel):
+    issue_id: str
+    support_count: int
+
+
+class IssueSupportCreate(BaseModel):
+    actor_label: Optional[str] = "Resident"
 
 
 class SeedRequest(BaseModel):

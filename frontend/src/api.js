@@ -41,6 +41,18 @@ export const api = {
   getCategories() {
     return this.request("/meta/categories");
   },
+  listComments(issueId) {
+    return this.request(`/issues/${issueId}/comments`);
+  },
+  addComment(issueId, payload) {
+    return this.request(`/issues/${issueId}/comments`, { method: "POST", body: JSON.stringify(payload) });
+  },
+  supportIssue(issueId, payload = {}) {
+    return this.request(`/issues/${issueId}/support`, { method: "POST", body: JSON.stringify(payload) });
+  },
+  getCommunityFeed() {
+    return this.request("/community/feed");
+  },
   resetSeed(payload) {
     return this.request("/admin/seed-reset", { method: "POST", body: JSON.stringify(payload) });
   },

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
-import { Activity, CheckCircle2, Filter, Info, MapPin, Plus, RefreshCw, Shield, Star, Wrench } from "lucide-react";
+import { Activity, CheckCircle2, Filter, Info, MapPin, MessageCircle, Plus, RefreshCw, Shield, Star, ThumbsUp, TrendingUp, Users, Wrench } from "lucide-react";
 import { api, getSavedRole, saveRole } from "./api";
 
 const STATUS_LABELS = {
@@ -56,6 +56,10 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [health, setHealth] = useState("checking");
+  const [comments, setComments] = useState([]);
+  const [commentDraft, setCommentDraft] = useState("");
+  const [communityFeed, setCommunityFeed] = useState({ trending_issues: [], recent_comments: [], stats: { issues: 0, comments: 0, supports: 0 } });
+  const [supportingIssueId, setSupportingIssueId] = useState(null);
 
   const [formData, setFormData] = useState({
     description: "",
@@ -95,6 +99,14 @@ export default function App() {
     }
   }, []);
 
+  const loadCommunityFeed = useCallback(async () => {
+    try {
+      setCommunityFeed(await api.getCommunityFeed());
+    } catch (err) {
+      setError(err.message);
+    }
+  }, []);
+
   const loadCategories = useCallback(async () => {
     try {
       setCategories(await api.getCategories());
@@ -107,8 +119,17 @@ export default function App() {
     loadIssues();
     loadStats();
     loadCategories();
+    loadCommunityFeed();
     api.health().then(() => setHealth("online")).catch(() => setHealth("offline"));
-  }, [loadIssues, loadStats, loadCategories]);
+  }, [loadIssues, loadStats, loadCategories, loadCommunityFeed]);
+
+  useEffect(() => {
+    if (!selected) {
+      setComments([]);
+      return;
+    }
+    api.listComments(selected.id).then(setComments).catch((err) => setError(err.message));
+  }, [selected]);
 
   const issueMapCenter = useMemo(() => {
     if (!issues.length) return [28.6139, 77.209];
@@ -175,6 +196,38 @@ export default function App() {
     }
   }
 
+  async function handleSupport(issue) {
+    setSupportingIssueId(issue.id);
+    try {
+      await api.supportIssue(issue.id, { actor_label: issue.reporter_name || "Resident" });
+      await loadIssues();
+      await loadCommunityFeed();
+      if (selected?.id === issue.id) {
+        setSelected(await api.getIssue(issue.id));
+        setComments(await api.listComments(issue.id));
+      }
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setSupportingIssueId(null);
+    }
+  }
+
+  async function submitComment(issue) {
+    if (!commentDraft.trim()) return;
+    try {
+      await api.addComment(issue.id, { author: getSavedRole() === "admin" ? "Department responder" : "Resident", body: commentDraft });
+      setCommentDraft("");
+      setComments(await api.listComments(issue.id));
+      await loadCommunityFeed();
+      if (selected?.id === issue.id) {
+        setSelected(await api.getIssue(issue.id));
+      }
+    } catch (err) {
+      setError(err.message);
+    }
+  }
+
   const openIssues = issues.filter((issue) => !["resolved", "closed", "duplicate"].includes(issue.status));
   const metrics = stats || {};
 
@@ -203,6 +256,7 @@ export default function App() {
         <button className={tab === "map" ? "active" : ""} onClick={() => setTab("map")}><MapPin size={16} /> Live map</button>
         <button className={tab === "queue" ? "active" : ""} onClick={() => setTab("queue")}><Wrench size={16} /> Department queue</button>
         <button className={tab === "impact" ? "active" : ""} onClick={() => setTab("impact")}><Activity size={16} /> Impact</button>
+        <button className={tab === "community" ? "active" : ""} onClick={() => setTab("community")}><MessageCircle size={16} /> Community</button>
       </nav>
 
       {error ? <div className="error-banner">{error}</div> : null}
@@ -309,6 +363,7 @@ export default function App() {
                       <span className={statusBadge(issue.status)}>{STATUS_LABELS[issue.status] || issue.status}</span>
                       <p>{issue.description}</p>
                       <small>{issue.department} · severity {issue.severity}/5 · {issue.is_overdue ? "OVERDUE" : `SLA ${issue.sla_hours}h`}</small>
+                      <small><ThumbsUp size={12} /> {issue.support_count || 0} · <MessageCircle size={12} /> {issue.comment_count || 0}</small>
                     </div>
                   </Popup>
                 </Marker>
@@ -332,9 +387,33 @@ export default function App() {
                   </dl>
                   <p className="ai-reason">{selected.ai_reason}</p>
                   {selected.duplicate_of ? <p className="duplicate">Possible duplicate of {selected.duplicate_of}</p> : null}
+
+                  <div className="community-inline">
+                    <button className="primary-tiny" onClick={() => handleSupport(selected)} disabled={supportingIssueId === selected.id}>
+                      <ThumbsUp size={14} /> Support ({selected.support_count || 0})
+                    </button>
+                    <span><MessageCircle size={14} /> {selected.comment_count || 0} comments</span>
+                  </div>
+
                   <div className="rating-row">
                     <button onClick={() => submitRating(selected, 5, "Resolved well")}><Star size={14} /> Rate 5</button>
                     <button onClick={() => submitRating(selected, 3, "Needs follow-up")}><Star size={14} /> Rate 3</button>
+                  </div>
+
+                  <div className="comment-box">
+                    <h4>Resident discussion</h4>
+                    <textarea value={commentDraft} onChange={(e) => setCommentDraft(e.target.value)} placeholder="Add context, a safety concern, or confirmation for the department." rows={3} />
+                    <button className="primary" onClick={() => submitComment(selected)}>Post comment</button>
+                    <div className="comment-list">
+                      {comments.map((comment) => (
+                        <article key={comment.id}>
+                          <strong>{comment.author}</strong>
+                          <p>{comment.body}</p>
+                          <small>{timeAgo(comment.created_at)}</small>
+                        </article>
+                      ))}
+                      {comments.length === 0 ? <p className="muted">No discussion yet. Be the first to add context.</p> : null}
+                    </div>
                   </div>
                 </>
               ) : (
@@ -435,6 +514,51 @@ export default function App() {
 
           <div className="card footer-note">
             <CheckCircle2 size={20} /> Civic Pulse AI tracks the full public-service lifecycle: intake, AI triage, routing, SLA, resolution evidence, and citizen feedback.
+          </div>
+        </section>
+      )}
+
+      {tab === "community" && (
+        <section className="panel">
+          <div className="stats-grid">
+            <div className="stat card"><span>Community posts</span><strong>{communityFeed.stats?.issues || 0}</strong></div>
+            <div className="stat card"><span>Supports</span><strong>{communityFeed.stats?.supports || 0}</strong></div>
+            <div className="stat card"><span>Comments</span><strong>{communityFeed.stats?.comments || 0}</strong></div>
+          </div>
+
+          <div className="map-wrap" style={{ gridTemplateColumns: "1.05fr .95fr" }}>
+            <div className="card">
+              <h3><TrendingUp size={18} /> Trending issues discussed by residents</h3>
+              <div className="bars">
+                {(communityFeed.trending_issues || []).map((issue) => (
+                  <div className="bar-row" key={issue.id} style={{ gridTemplateColumns: "1fr 1fr 80px" }}>
+                    <button className="link-ish" onClick={() => { setSelected(issue); setTab("map"); }}>{issue.title}</button>
+                    <div className="bar-track">
+                      <div className="bar-fill" style={{ width: `${Math.min(100, (issue.support_count + issue.comment_count) * 14)}%`, background: severityColor(issue.severity || 3) }} />
+                    </div>
+                    <strong>{issue.support_count || 0} support</strong>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="card">
+              <h3><MessageCircle size={18} /> Recent resident comments</h3>
+              <div className="comment-list">
+                {(communityFeed.recent_comments || []).map((comment) => (
+                  <article key={comment.id}>
+                    <div><strong>{comment.author}</strong> on <button className="link-ish" onClick={() => setTab("map")}>{comment.issue_title}</button></div>
+                    <p>{comment.body}</p>
+                    <small>{timeAgo(comment.created_at)}</small>
+                  </article>
+                ))}
+                {(communityFeed.recent_comments || []).length === 0 ? <p className="muted">No community comments yet. Be the first to support an issue.</p> : null}
+              </div>
+            </div>
+          </div>
+
+          <div className="card footer-note">
+            <Users size={20} /> This tab turns scattered complaints into a collective signal: residents support issues, add context, and show which problems feel most urgent before the department acts.
           </div>
         </section>
       )}
