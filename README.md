@@ -64,3 +64,38 @@ The UI is generated from the approved Civic Clarity Stitch design and uses:
 - deep navy, cobalt action blue, amber/orange incident emphasis, semantic status colors
 - rounded institutional cards and precise borders
 - 44px+ touch targets and responsive navigation
+
+## Advanced AI services
+The FastAPI app now includes Copilot, voice transcription, Google Maps grounding, civic broadcast, telemetry, and predictive advisory endpoints under `/api/...`.
+
+### Optional environment variables
+- `GEMINI_API_KEY` enables Gemini-backed triage, chat, transcription, and grounding behavior.
+- `GEMINI_MODEL` defaults to `gemini-3.8-flash` when a key is provided.
+- `GEMINI_TRANSCRIPTION_MODEL` defaults to `gemini-3.5-transcribe`.
+- `APP_URL` may be used for hosting or OAuth-style callbacks.
+
+Illustration:
+```bash
+GEMINI_API_KEY=your_key_here
+GEMINI_MODEL=gemini-3.8-flash
+GEMINI_TRANSCRIPTION_MODEL=gemini-3.5-transcribe
+```
+
+Google Maps does not require an API key in this implementation. It opens Google Maps search links directly from issue addresses and grounding results. Google Maps embeddings or direct JavaScript map SDK usage would require a separate Google Maps API key and billing setup.
+
+### New endpoints
+- `/api/triage`
+- `/api/chat`
+- `/api/transcribe`
+- `/api/tts`
+- `/api/broadcast`
+- `/api/telemetry`
+- `/api/predictions`
+
+### Build validation
+```bash
+cd frontend
+npm run build
+cd ../backend
+python -m py_compile app/main.py app/ai_services.py
+```

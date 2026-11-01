@@ -3,6 +3,12 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { api, getSavedRole, saveRole } from "./api";
+import { toCopilotIncident } from "./incidentAdapter";
+import { AiTelemetryStrip } from "./components/AiTelemetryStrip";
+import { GeminiCopilot } from "./components/GeminiCopilot";
+import { PredictiveForecasting } from "./components/PredictiveForecasting";
+import VoiceReporter from "./components/VoiceReporter";
+import { BroadcastModal } from "./components/BroadcastModal";
 
 const STATUS_LABELS = {
   reported: "Reported",
@@ -234,6 +240,8 @@ export default function App() {
   });
   const [triageDraft, setTriageDraft] = useState(null);
   const [reportBusy, setReportBusy] = useState(false);
+  const [copilotOpen, setCopilotOpen] = useState(false);
+  const [broadcastTarget, setBroadcastTarget] = useState(null);
 
   const triageTimer = useRef(null);
 
@@ -262,6 +270,57 @@ export default function App() {
       issues.reduce((sum, issue) => sum + issue.longitude, 0) / issues.length
     ];
   }, [issues]);
+
+  const copilotIncident = useMemo(() => {
+    if (!selected) return null;
+    const priority = selected.severity >= 5 ? "P1" : selected.severity >= 4 ? "P2" : selected.severity === 3 ? "P3" : "P4";
+    return {
+      id: selected.id,
+      code: selected.id,
+      title: selected.title,
+      category: selected.category,
+      priority,
+      priorityLabel: `${priority} - Civic Pulse AI`,
+      status: selected.status === "resolved" ? "resolved" : selected.status === "assigned" || selected.status === "in_progress" ? "dispatched" : "triaged",
+      location: {
+        address: selected.address || `${selected.latitude}, ${selected.longitude}`,
+        district: "Ward 112 - Indiranagar",
+        crossStreet: selected.address || "Indiranagar",
+        lat: selected.latitude,
+        lng: selected.longitude,
+        mapX: 50,
+        mapY: 50
+      },
+      reportedAt: selected.created_at,
+      slaDeadlineSeconds: Math.max(0, Math.round((new Date(selected.sla_deadline).getTime() - Date.now()) / 1000)),
+      initialSlaMinutes: selected.sla_hours,
+      caller: {
+        name: selected.reporter_name || "Citizen reporting unit",
+        contact: "Ward 112",
+        channel: "311 Citizen Portal",
+        recordedAt: selected.created_at
+      },
+      callerTranscript: selected.description || "No transcript provided.",
+      hasAudio: false,
+      audioDuration: "00:00",
+      imageUrl: null,
+      aiConfidence: Math.round((selected.ai_confidence || 0.8) * 100),
+      aiModel: "Civic Pulse FastAPI",
+      municipalCode: selected.id,
+      aiSummary: selected.ai_reason || "Incident triage summary generated from Civic Pulse rules.",
+      riskAssessment: {
+        publicSafety: selected.severity >= 4 ? (selected.severity >= 5 ? "Critical" : "High") : "Medium",
+        infrastructure: selected.severity >= 3 ? "High" : "Medium",
+        financialLiability: selected.is_overdue ? "High" : "Medium"
+      },
+      primaryAgency: selected.department,
+      secondaryAgencies: ["Ward 112 Dispatch", "Operations Center"],
+      assignedUnits: [],
+      recommendedActions: [selected.ai_reason || "Verify the incident location and collect evidence."],
+      auditTrail: [],
+      aiRecommendedPriority: null
+    };
+  }, [selected]);
 
   async function loadAll() {
     try {
@@ -480,6 +539,15 @@ export default function App() {
                   Officer
                 </button>
               </div>
+              <button
+                type="button"
+                onClick={() => setCopilotOpen(true)}
+                className="hidden items-center gap-space-sm rounded bg-secondary text-on-secondary px-space-md h-10 font-label-md font-semibold shadow-sm hover:bg-secondary/90 sm:inline-flex"
+                title="Open Civic Guard AI"
+              >
+                <span className="material-symbols-outlined text-[18px]">auto_awesome</span>
+                Civic Guard AI
+              </button>
               <button className="relative p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container rounded-lg" onClick={() => setTab("alerts")}>
                 <span className="material-symbols-outlined text-[20px]">notifications</span>
                 {criticalIssues.length > 0 && <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest" />}
@@ -561,6 +629,7 @@ export default function App() {
   }
 
   return (
+    <>
     <Shell>
       {tab === "dashboard" && (
         <>
@@ -597,6 +666,8 @@ export default function App() {
               </div>
             </div>
           </div>
+
+          <AiTelemetryStrip />
 
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-gutter-lg">
             <MetricCard icon="emergency_home" label="Active issues" value={stats?.open || 0} hint="Under active jurisdiction" />
@@ -715,6 +786,38 @@ export default function App() {
               onComment={(body) => selected && handleComment(selected, body)}
               commentBusy={commentsBusy}
             />
+            <PredictiveForecasting />
+            <div className="flex flex-wrap gap-space-sm">
+              {selected?.address && (
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(selected.address)}`}
+                  className="inline-flex h-10 items-center gap-space-sm rounded bg-surface-container-lowest px-space-sm font-label-md text-secondary shadow-sm hover:bg-surface-container"
+                >
+                  <span className="material-symbols-outlined text-[18px]">map</span>
+                  Open Google Maps
+                </a>
+              )}
+              <button
+                type="button"
+                disabled={!selected}
+                onClick={() => setBroadcastTarget(selected)}
+                className="inline-flex h-10 items-center gap-space-sm rounded bg-secondary text-on-secondary px-space-md font-label-md font-semibold shadow-sm disabled:opacity-50"
+              >
+                <span className="material-symbols-outlined text-[18px]">broadcast_on_home</span>
+                Generate Advisory
+              </button>
+            </div>
+            <button
+              type="button"
+              onClick={() => setBroadcastTarget(selected)}
+              disabled={!selected}
+              className="inline-flex h-10 items-center gap-space-sm rounded bg-secondary text-on-secondary px-space-md font-label-md font-semibold shadow-sm disabled:opacity-50"
+            >
+              <span className="material-symbols-outlined text-[18px]">broadcast_on_home</span>
+              Generate Advisory
+            </button>
           </div>
         </div>
       )}
@@ -725,6 +828,7 @@ export default function App() {
             <Card className="p-space-lg flex flex-col gap-space-md">
               <SectionHeader title="Report an issue" subtitle="Residents describe what they see. AI triage suggests category, severity, department, and SLA." />
               <form className="flex flex-col gap-space-md" onSubmit={submitReport}>
+                <VoiceReporter value={reportDraft.description} onTranscript={(value) => setReportDraft((previous) => ({ ...previous, description: value }))} />
                 <Field label="Description">
                   <textarea className={inputClass() + " min-h-[160px] py-space-sm"} required value={reportDraft.description} onChange={(e) => setReportDraft((p) => ({ ...p, description: e.target.value }))} placeholder="Example: Overhead wire near bus stop, live hazard, traffic blocked, urgent repair needed." />
                 </Field>
@@ -1099,6 +1203,29 @@ export default function App() {
         </div>
       )}
     </Shell>
+
+    <GeminiCopilot
+      currentIncident={copilotIncident}
+      isOpen={copilotOpen}
+      onClose={() => setCopilotOpen(false)}
+      onLocatePinOnMap={(lat, lng, title) => {
+        setTab("live-map");
+        const match = issues.find((item) => Math.abs(item.latitude - lat) < 0.001 && Math.abs(item.longitude - lng) < 0.001);
+        if (match) setSelectedId(match.id);
+        else setError(title ? `Locating ${title} on the map` : "");
+      }}
+    />
+    <BroadcastModal issue={broadcastTarget} onClose={() => setBroadcastTarget(null)} />
+    <button
+      type="button"
+      onClick={() => setCopilotOpen(true)}
+      className="fixed bottom-[5.25rem] right-4 z-[60] inline-flex h-12 items-center gap-space-sm rounded-full bg-primary-container text-on-primary px-space-md shadow-lg xl:bottom-6"
+      title="Open Civic Guard AI"
+    >
+      <span className="material-symbols-outlined">auto_awesome</span>
+      <span className="hidden font-label-md font-semibold sm:inline">Civic Guard AI</span>
+    </button>
+    </>
   );
 }
 function ButtonPill({ label, active = false, selected = false }) {
